@@ -1,0 +1,59 @@
+header {
+    position: relative;
+    max-width: 100%;
+    margin: 0;
+    padding: 2em;
+    background: $base-bg;
+    box-shadow: 0 0 6em 0 rgba(black, 0.4), 0 0 1em 0 rgba(black, 0.3);
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+.header-menu {
+    &-auth {
+        display: flex;
+    }
+}
+.x-marr20 {
+    margin-right: 20px;
+}
+.logo-box {
+    display: flex;
+    align-items: center;
+    &-xg {
+        max-width: 68px;
+        transform: rotate(270deg);
+    }
+    &-desc {
+        margin-left: -14px;
+    }
+    &-text {
+        font-size: 17px;
+        letter-spacing: -3px;
+        font-weight: 700;
+        font-family: 'Press Start 2P', cursive;
+    }
+    &-title {
+        font-size: 12px;
+    }
+}
+.container {
+    margin: auto;
+    transition: .3s;
+}
+.bg-w {
+    background: $base-bg;
+}
+.x-sale {
+    background-color: $color-red;
+    color: #ffffff;
+    padding: 0 10px;
+    border-radius: 4px;
+}
+footer {
+    position: relative;
+    max-width: 100%;
+    margin: 0;
+    padding: 2em;
+    background: $base-bg;
+}

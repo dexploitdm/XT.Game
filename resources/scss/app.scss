@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import '_variables';
+@import 'base';
+@import 'blocks/button';
+@import 'blocks/layout';
+@import 'blocks/cards';
+@import 'blocks/slider';
+@import 'blocks/game-list';
