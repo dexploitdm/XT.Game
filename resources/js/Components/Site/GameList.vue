@@ -1,9 +1,28 @@
 <script setup>
 import {onMounted, ref} from 'vue';
 import { Link } from '@inertiajs/inertia-vue3';
+import { gamesStore } from "@/store/games";
+import { useStore } from 'vuex'
+
+
+
+import Repository from "@/repositories/RepositoryFactory";
+const PostRepository = Repository.get("posts");
+
+
+
+const store = useStore()
 
 onMounted(async () => {
     await getGames()
+
+
+
+
+    //store.dispatch('addLists', 'ssdasd')
+
+    // console.log(store.getters.getGamesStore)
+
 })
 
 let games = ref([])
@@ -14,9 +33,19 @@ const salePercent = (price, sale) => {
 };
 
 const getGames = async () => {
-    let response = await axios.get('/api/get_all_games');
-    games.value = response.data
+    // let response = await axios.get('/api/get_all_games');
+    // games.value = response.data
+    // store.dispatch('addLists', response.data)
+    // console.log(store.getters.getGamesStore)
+
+
+    // const response = await this.$api.game.getLists();
+    // console.log(response);
+
+    const { data } = await PostRepository.get('/api/get_all_games');
+    console.log(data)
 }
+
 
 const tr = (text, length, suffix) => {
     if (text.length > length) {
