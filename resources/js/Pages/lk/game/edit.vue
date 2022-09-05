@@ -22,6 +22,7 @@ let form = useForm({
     content: props.game.content,
     cover: props.game.cover,
     price: props.game.price,
+    sale: props.game.sale,
     category_id: props.game.category_id,
     xbox_one: String(props.game.xbox_one),
     xbox_sx: String(props.game.xbox_sx)
@@ -70,6 +71,7 @@ const updateGame = () => {
         content: form.content,
         cover: form.cover,
         price: form.price,
+        sale: form.sale,
         category_id: form.category_id,
         xbox_one: form.xbox_one,
         xbox_sx: form.xbox_sx,
@@ -115,6 +117,8 @@ const updateGame = () => {
                             <QuillEditor theme="snow" v-model:content="form.content" content-type="html"/>
                         </div>
                         <input type="number" class="" v-model="form.price"  placeholder="price"/>
+
+                        <input type="number" class="" v-model="form.sale"  placeholder="sale"/>
 
                         <el-select v-model="form.category_id" placeholder="Select">
                             <el-option

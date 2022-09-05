@@ -16,6 +16,7 @@ let form = useForm({
     cover: null,
     category_id: null,
     price: null,
+    sale: null,
     xbox_one: true,
     xbox_sx: false
 })
@@ -92,6 +93,8 @@ const saveGame = () => {
                             <QuillEditor theme="snow" v-model:content="form.content" content-type="html"/>
                         </div>
                         <input type="number" class="" v-model="form.price"  placeholder="price"/>
+
+                        <input type="number" class="" v-model="form.sale"  placeholder="sale"/>
 
                         <el-select v-model="form.category_id" placeholder="Select">
                             <el-option
