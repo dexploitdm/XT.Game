@@ -2,8 +2,8 @@ import Client from './Clients/AxiosClient';
 const resource = '/posts';
 
 export default {
-    get() {
-        return Client.get(`/api/get_all_games`);
+    get(id) {
+        return Client.get(`/api/get_all_games?page=${id}`);
     },
     getPost(id) {
         return Client.get(`${resource}/${id}`);
