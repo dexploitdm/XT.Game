@@ -52,6 +52,7 @@ class GameController extends Controller
 
         $game->content = $request->content;
         $game->price = $request->price;
+        $game->sale = $request->sale;
         $game->category_id = $request->category_id;
         $game->xbox_one = $request->xbox_one;
         $game->xbox_sx = $request->xbox_sx;
@@ -98,6 +99,7 @@ class GameController extends Controller
         $game->cover = $name;
         $game->content = $request->content;
         $game->price = $request->price;
+        $game->sale = $request->sale;
         $game->category_id = $request->category_id;
         $game->xbox_one = $request->xbox_one;
         $game->xbox_sx = $request->xbox_sx;
@@ -122,7 +124,8 @@ class GameController extends Controller
 
 
     public function get_all_games() {
-        $games = Games::all();
+//        $games = Games::all();
+        $games = Games::paginate(27);
         return response()->json($games);
 
 

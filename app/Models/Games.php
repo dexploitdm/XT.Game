@@ -15,6 +15,7 @@ class Games extends Model
         'content',
         'cover',
         'price',
+        'sale',
         'category_id',
         'xbox_one',
         'xbox_sx'

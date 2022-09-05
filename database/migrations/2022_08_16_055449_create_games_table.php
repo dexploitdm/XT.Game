@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('content')->nullable();
             $table->string('cover')->nullable();
             $table->integer('price')->nullable();
+            $table->integer('sale')->nullable();
             $table->integer('category_id')->nullable();
             $table->boolean('xbox_one')->default(true);
             $table->boolean('xbox_sx')->default(false);
