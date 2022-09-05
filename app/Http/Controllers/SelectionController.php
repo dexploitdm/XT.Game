@@ -120,6 +120,11 @@ class SelectionController extends Controller
         //
     }
 
+    public function get_selections() {
+        $selection = Selection::all();
+        return response()->json($selection);
+    }
+
     public function get_selection_games($id) {
         $selection = Selection::find($id);
 
@@ -134,6 +139,9 @@ class SelectionController extends Controller
         }
 
 
-        return response()->json($listSelectGame);
+        return response()->json([
+            'data' => $selection,
+            'listSelectGame' => $listSelectGame
+        ]);
     }
 }

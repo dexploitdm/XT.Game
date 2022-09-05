@@ -1,7 +1,9 @@
-import PostRepository from './PostRepository';
+import GameRepository from './GameRepository';
+import SelectionRepository from './SelectionRepository';
 
 const repositories = {
-    'posts': PostRepository
+    'games': GameRepository,
+    'selection': SelectionRepository,
 }
 export default {
     get: name => repositories[name]
