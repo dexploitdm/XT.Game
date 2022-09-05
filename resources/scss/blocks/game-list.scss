@@ -15,7 +15,12 @@ $game-adaptive-breakpoints: (
     grid-gap: $game-gutter;
     margin: 40px 0;
     transition: .3s;
-
+    @media (max-width: 1100px) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
     &-item {
         height: 180px;
         display: flex;
@@ -54,6 +59,7 @@ $game-adaptive-breakpoints: (
         }
     }
     &-info {
+        position: relative;
         width: 100%;
         padding: 10px 10px 10px 0;
         &-title {
@@ -62,7 +68,58 @@ $game-adaptive-breakpoints: (
         }
         &-desc {
             font-size: 14px;
+            max-height: 70px;
+            overflow: hidden;
+            @media (max-width: 420px) {
+                display: none;
+            }
         }
     }
+    &-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+        transition: .3s;
+        flex-wrap: wrap;
+        position: absolute;
+        width: inherit;
+        padding-right: 20px;
+        bottom: 20px;
+        background-color: white;
+        box-shadow: -3px -8px 5px #ffffff;
+    }
+    &-price {
+        position: relative;
+        .active {
+            position: relative;
+            &:after {
+                content: "";
+                position: absolute;
+                border-bottom: 3px solid #eb3941;
+                width: 100%;
+                left: 0;
+                bottom: 10px;
+            }
+        }
+
+        .game-sale {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            transition: .3s;
+            @media (max-width: 1535px) {
+                position: initial;
+            }
+            @media (max-width: 1024px) {
+                display: block;
+            }
+        }
+
+    }
+    &-pay {
+        margin-left: auto;
+    }
 }
+
 

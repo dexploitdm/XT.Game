@@ -23,9 +23,6 @@ const getInfo = async () => {
         <Logo />
 
         <div class="header-menu">
-            canLogin {{ canLogin}} <br>
-            canRegister {{ canRegister}} <br>
-
             <div v-if="canLogin" class="header-menu-auth">
 
                 <Link v-if="$page.props.auth.user" :href="route('dashboard')" class="xt-btn color-11">Личный кабинет</Link>

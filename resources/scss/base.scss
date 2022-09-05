@@ -13,6 +13,12 @@ body {
     background: $primal-bg;
 }
 
-
+.container-box {
+    padding: 0 30px;
+    transition: .3s;
+    @media (max-width: 768px) {
+        padding: 0 15px;
+    }
+}
 
 

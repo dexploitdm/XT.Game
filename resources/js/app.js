@@ -1,22 +1,26 @@
 import './bootstrap';
 import '../scss/app.scss';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
+
 import { createApp, h } from 'vue';
 import { createStore } from 'vuex'
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
-import "@/api.js";
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
-// import store from './store'
 import { gamesStore } from './store/games.js';
+import { selectionStore } from './store/selection.js';
 
 const store = createStore({
     modules: {
-        gamesStore
+        gamesStore,
+        selectionStore
     }
 })
 

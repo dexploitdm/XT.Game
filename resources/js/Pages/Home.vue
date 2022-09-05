@@ -2,6 +2,7 @@
 import BreezeMainLayout from '@/Layouts/Main.vue';
 import SliderHome from '@/Components/Site/SliderHome.vue';
 import GameList from '@/Components/Site/GameList.vue';
+import SelectionList from '@/Components/Site/SelectionList.vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
 
 
@@ -15,7 +16,10 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
 
         <SliderHome />
 
+        <SelectionList />
+
         <GameList />
+
 
         <div class="container bg-w" style="margin-top: 50px;">
             <div>Игры</div>

@@ -59,6 +59,13 @@ const onSlideChange = () => {
     // console.log('slide change');
 };
 
+
+const priceFormat = (price, sale, rate) => {
+    let totalPrice = price
+    if(sale) {totalPrice = sale}
+    return (totalPrice * rate).toFixed(2)
+}
+
 </script>
 <template>
     <div class="x-slide">
@@ -84,7 +91,7 @@ const onSlideChange = () => {
                                 <div class="x-slide-info-box">
                                     <div class="x-slide-info_price">
                                         <div class="x-slide-info_price__all">
-                                            {{ item.price * Number($inertia.page.props.rate) }} RU (<span  :class="{ active: item.sale }">{{ item.price }} TRY</span>)
+                                            {{ priceFormat(item.price, item.sale, $inertia.page.props.rate) }} RU (<span  :class="{ active: item.sale }">{{ item.price }} TRY</span>)
                                         </div>
                                         <div class="x-slide-info_price__sale" v-if="item.sale">
                                             {{ item.sale }} TRY   <span class="x-sale">- {{ salePercent(item.price, item.sale) }} %</span>
