@@ -6,20 +6,25 @@ import { Inertia } from "@inertiajs/inertia";
 import Repository from "@/repositories/RepositoryFactory";
 const GameRepository = Repository.get("games");
 
+const props = defineProps({
+    selection: Array,
+    listSelectGame: Array
+})
+
+
 const selectGame = ref([])
 
 let form = useForm({
-    title: null,
-    cover: null,
+    id: props.selection.id,
+    title: props.selection.title,
+    cover: props.selection.cover,
     game_ids: selectGame.value
 })
 
-// const props = defineProps({
-//     games: {
-//         type: Object,
-//         default: () => ({}),
-//     },
-// });
+onMounted(async () => {
+    const jsonObj = JSON.parse('[' + props.selection.game_ids + ']');
+    selectGame.value = jsonObj[0]
+})
 
 let search = ref('');
 let games = ref({});
@@ -48,6 +53,7 @@ const setGame = (id) => {
 const getCover = () => {
     let cover = '/uploads/selection/preview.jpg'
     if(form.cover) {
+        console.log(form.cover)
         if(form.cover.indexOf('base64') !== -1 ) {
             cover = form.cover
         } else {
@@ -71,7 +77,13 @@ const updateCover = (e) => {
 }
 
 const saveSelection = () => {
-    form.post('/lk/selection')
+    Inertia.post(`/lk/selection/${props.selection.id}`, {
+        _method: 'put',
+        id: form.id,
+        title: form.title,
+        cover: form.cover,
+        game_ids: selectGame.value
+    })
 }
 
 </script>
@@ -103,9 +115,11 @@ const saveSelection = () => {
 
                         <input type="text" class="" v-model="form.title" />
 
+
                         <img :src="getCover()" src="" >
 
                         <input type="file" @change="updateCover" />
+
 
                         <div style="padding: 40px 0;">
                             <div  v-for="item in games.data">
