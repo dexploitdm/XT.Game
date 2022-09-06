@@ -1,8 +1,8 @@
 <script setup>
 import BreezeMainLayout from '@/Layouts/Main.vue';
-import SliderHome from '@/Components/Site/SliderHome.vue';
-import GameList from '@/Components/Site/GameList.vue';
-import SelectionList from '@/Components/Site/SelectionList.vue';
+import SliderHome from '@/Components/slider/SliderHome.vue';
+import GameList from '@/Components/games/GameList.vue';
+import SelectionList from '@/Components/selections/SelectionList.vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
 
 
