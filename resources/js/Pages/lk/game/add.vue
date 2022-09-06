@@ -22,7 +22,6 @@ let form = useForm({
 })
 
 const getCover = () => {
-    console.log('getCover')
     let cover = '/uploads/games/preview.png'
     if(form.cover) {
         if(form.cover.indexOf('base64') !== -1 ) {
@@ -35,7 +34,6 @@ const getCover = () => {
 }
 
 const updateCover = (e) => {
-    console.log(e)
     let file = e.target.files[0];
     let reader = new FileReader();
     let limit = 1024 * 1024 * 2;
@@ -43,7 +41,6 @@ const updateCover = (e) => {
         return false
     }
     reader.onloadend = (file) => {
-        console.log('sss')
         form.cover = reader.result;
     }
     reader.readAsDataURL(file);
