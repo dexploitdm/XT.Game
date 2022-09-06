@@ -46,12 +46,12 @@ const getSe = async () => {
 
                                 <div class="table-card-info">
                                     {{ item.title }}
-<!--                                    <Link :href="route('selection.edit', item.id)" :id="item.id">-->
-<!--                                        Edit-->
-<!--                                    </Link>-->
-<!--                                    <Link :href="route('selection.destroy', item.id)" method="delete">-->
-<!--                                        Remove-->
-<!--                                    </Link>-->
+                                    <Link :href="route('selection.edit', item.id)" :id="item.id">
+                                        Edit
+                                    </Link>
+                                    <Link :href="route('selection.destroy', item.id)" method="delete">
+                                        Remove
+                                    </Link>
                                 </div>
                             </div>
                         </div>
