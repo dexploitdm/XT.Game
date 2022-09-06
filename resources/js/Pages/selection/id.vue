@@ -1,23 +1,19 @@
 <script setup>
 import BreezeMainLayout from '@/Layouts/Main.vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
-import {onMounted, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
+import {useStore} from "vuex";
+const store = useStore()
 
 const props = defineProps({
     id: Number
 })
 
-let selection = ref([])
+const selection = computed(() => store.getters.getSelectionGames)
 
 onMounted(async () => {
-    await getGames(props.id)
+    await store.dispatch("getSelectionItem", props.id);
 })
-
-const getGames = async (id) => {
-    let response = await axios.get(`/api/get_selection_games/${id}`);
-    selection.value = response.data
-}
-
 </script>
 
 <template>
@@ -26,7 +22,7 @@ const getGames = async (id) => {
        this {{ props.id }}
 
         <div class="container bg-w" style="margin-top: 50px;">
-            <div>{{ selection.data.title }}</div>
+            <div v-if="selection.data">{{ selection.data.title }}</div>
             <br>
             <hr>
             <br>

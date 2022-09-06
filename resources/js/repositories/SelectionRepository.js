@@ -5,6 +5,6 @@ export default {
         return Client.get(`/api/get_selections`);
     },
     getSelectionItem(id) {
-        return Client.get(`get_selection/${id}`);
+        return Client.get(`/api/get_selection_games/${id}`);
     }
 };
