@@ -119,10 +119,6 @@ class GameController extends Controller
         return back();
     }
 
-
-
-
-
     public function get_all_games() {
 //        $games = Games::all();
         $games = Games::paginate(27);
@@ -138,35 +134,14 @@ class GameController extends Controller
         return response()->json($game);
     }
 
-//    public function get_edit_game($id) {
-//        $game = Games::find($id);
-//        return response()->json($game);
-//    }
-//
-//    public function update_game(Request $request, $id) {
-//        $game = Games::find($id);
-//        $game->title = $request->title;
-//        $game->desc = $request->desc;
-//
-//        if($game->cover != $request->cover) {
-//            $strpos = strpos($request->cover, ';');
-//            $sub = substr($request->cover,0, $strpos);
-//            $ex = explode('/', $sub)[1];
-//            $name = time().".".$ex;
-//            $img = Image::make($request->cover);
-//            $upload_path = public_path().'/uploads/games/';
-//            $image = $upload_path. $game->cover;
-//            $img->save($upload_path.$name);
-//            if(file_exists($image)) {
-//                @unlink($image);
-//            }
-//        } else {
-//            $name = $game->cover;
-//        }
-//
-//        $game->cover = $name;
-//        $game->content = $request->content;
-//        $game->price = $request->price;
-//        $game->save();
-//    }
+    public function search(Request $request) {
+        $games = Games::query()
+            ->when($request->input('search'), function ($query, $search) {
+                $query->where('title', 'like', '%' . $search . '%')
+                    ->OrWhere('desc', 'like', '%' . $search . '%');
+            })->paginate(8)
+            ->withQueryString();
+
+        return response()->json($games);
+    }
 }
