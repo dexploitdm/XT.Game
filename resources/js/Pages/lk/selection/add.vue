@@ -1,49 +1,15 @@
 <script setup>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-import { onMounted, ref, watch } from 'vue'
+import {computed, onMounted, ref, watch} from 'vue'
 import { Inertia } from "@inertiajs/inertia";
-import Repository from "@/repositories/RepositoryFactory";
-const GameRepository = Repository.get("games");
-
-const selectGame = ref([])
+import SearchSelectionGames from '@/Components/selections/SearchSelectionGames.vue';
 
 let form = useForm({
     title: null,
     cover: null,
-    game_ids: selectGame.value
+    game_ids: null
 })
-
-// const props = defineProps({
-//     games: {
-//         type: Object,
-//         default: () => ({}),
-//     },
-// });
-
-let search = ref('');
-let games = ref({});
-
-
-watch(search, (value) => {
-    // Inertia.get(
-    //     "/lk/selection/create",
-    //     { search: value },
-    //     {
-    //         preserveState: true,
-    //     }
-    // );
-    getSearch(value);
-});
-
-const getSearch = async (key) => {
-    let response = await GameRepository.search(key)
-    games.value = response.data
-}
-
-const setGame = (id) => {
-    selectGame.value.push({id})
-}
 
 const getCover = () => {
     let cover = '/uploads/selection/preview.jpg'
@@ -73,7 +39,9 @@ const updateCover = (e) => {
 const saveSelection = () => {
     form.post('/lk/selection')
 }
-
+const getIDs = (e) => {
+    form.game_ids = e
+}
 </script>
 <template>
     <Head title="Добавить категорию" />
@@ -81,9 +49,9 @@ const saveSelection = () => {
     <BreezeAuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Добавить категорию
+                Добавить подборку игр
                 <pre>
-                    {{selectGame}}
+<!--                    {{ form.game_ids }}-->
                 </pre>
             </h2>
         </template>
@@ -94,12 +62,7 @@ const saveSelection = () => {
                     <div class="p-6 bg-white border-b border-gray-200">
                         form
 
-                        <input
-                            type="text"
-                            v-model="search"
-                            placeholder="Search..."
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5 "
-                        />
+                        <SearchSelectionGames v-on:ids="getIDs"/>
 
                         <input type="text" class="" v-model="form.title" />
 
@@ -107,11 +70,6 @@ const saveSelection = () => {
 
                         <input type="file" @change="updateCover" />
 
-                        <div style="padding: 40px 0;">
-                            <div  v-for="item in games.data">
-                                <div @click="setGame(item.id)">Выбрать: {{ item.title }}</div>
-                            </div>
-                        </div>
 
 
 
