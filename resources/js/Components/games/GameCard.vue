@@ -2,7 +2,7 @@
 import { Link } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
-    game: Array
+    game: Object
 })
 
 const salePercent = (price, sale) => {

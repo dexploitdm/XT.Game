@@ -70,7 +70,7 @@ const priceFormat = (price, sale, rate) => {
 <template>
     <div class="x-slide">
         <swiper
-            :slides-per-view="auto"
+            slides-per-view="auto"
             :slides-per-group="1"
             :loop="true"
             :space-between="20"
