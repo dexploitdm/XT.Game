@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Games;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Image;
 use Inertia\Inertia;
@@ -119,14 +120,14 @@ class GameController extends Controller
         return back();
     }
 
-    public function get_all_games() {
-//        $games = Games::all();
+    public function get_all_games(Request $request) {
         $games = Games::paginate(27);
+
+        if($request->query('select') === 'sale') {
+            $games = DB::table('games')->whereNotNull('sale')->paginate(27);
+        }
+
         return response()->json($games);
-
-
-//        $games = Games::paginate(5);
-//        return response()->json($games);
     }
 
     public function get_game($id) {

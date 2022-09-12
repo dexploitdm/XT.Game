@@ -9,27 +9,27 @@ export const gamesStore = {
     }),
 
     actions: {
-        // addLists ({ commit }, data) {
-        //     commit('setGames', {data})
-        // },
-
-        async getGames({state, commit }) {
-            commit('loadGames', await GameRepository.get(state.page));
+        async getGames({state, commit }, payload) {
+            commit('loadGames', await GameRepository.get(state.page, payload))
         },
 
         selectPage ({ commit }, data) {
             commit('setPage', data)
         },
+        clearGames ({ commit }) {
+            commit('setClear')
+        },
     },
 
     mutations: {
-        // setGames (state, pack) {
-        //     state.lists = pack
-        // },
+        setClear (state) {
+            state.lists = []
+        },
         setPage (state, page) {
             state.page = page
         },
         loadGames: (state, res) => {
+            console.log(res)
             state.page = res.data.current_page
             state.last_page = res.data.last_page
             const { data } = res.data;
