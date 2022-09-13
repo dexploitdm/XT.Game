@@ -12,4 +12,13 @@ class Category extends Model
     protected $fillable = [
         'title'
     ];
+
+//    public function games()
+//    {
+//        return $this->belongsToMany(Games::class);
+//    }
+//    public function games()
+//    {
+//        return $this->hasMany(Games::class);
+//    }
 }

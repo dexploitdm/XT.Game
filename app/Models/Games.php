@@ -21,4 +21,9 @@ class Games extends Model
         'xbox_sx'
     ];
 
+    public function categories()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
 }

@@ -10,6 +10,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/get_info', [\App\Http\Controllers\HomeController::class, 'info']);
 
 Route::get('/get_all_games', [\App\Http\Controllers\GameController::class, 'get_all_games']);
+Route::get('/get_categories', [\App\Http\Controllers\GameController::class, 'get_categories']);
+Route::get('/get_cat_games/{id}', [\App\Http\Controllers\GameController::class, 'get_cat_games']);
 Route::get('/get_game/{id}', [\App\Http\Controllers\GameController::class, 'get_game']);
 Route::get('/search/', [\App\Http\Controllers\GameController::class, 'search']);
 

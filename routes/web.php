@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 
 Route::get('/game/{id}', function ($id) {return Inertia::render('game/id',['id' => $id]);})->name('show');
+Route::get('/category/{id}', function ($id) {return Inertia::render('category/id',['id' => $id]);})->name('showCat');
 Route::get('/selection/{id}', function ($id) {return Inertia::render('selection/id',['id' => $id]);})->name('showSelection');
 //TODO: Или в контроллере достать модель и передать в вид
 //Route::get('/game/{id}', [\App\Http\Controllers\HomeController::class, 'show']);
