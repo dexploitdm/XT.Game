@@ -5,16 +5,28 @@ export const gamesStore = {
     state: () => ({
         lists: [],
         page: 1,
-        last_page: 1
+        last_page: 1,
+        categories: [],
+        category_item: []
     }),
 
     actions: {
-        async getGames({state, commit }, payload) {
+        async getGames({ state, commit }, payload) {
             commit('loadGames', await GameRepository.get(state.page, payload))
         },
-
         selectPage ({ commit }, data) {
             commit('setPage', data)
+        },
+        async categoriesList ({ state, commit }) {
+            if(state.categories.length === 0) {
+                commit('loadCategories', await GameRepository.getCategories())
+            }
+            commit('setPage')
+        },
+        async getGamesCategory({ state, commit }, id) {
+            const info = await GameRepository.getGamesCategory(state.page, id)
+            commit('loadGames', info.data)
+            commit('setCategory', info.data )
         },
         clearGames ({ commit }) {
             commit('setClear')
@@ -22,14 +34,7 @@ export const gamesStore = {
     },
 
     mutations: {
-        setClear (state) {
-            state.lists = []
-        },
-        setPage (state, page) {
-            state.page = page
-        },
         loadGames: (state, res) => {
-            console.log(res)
             state.page = res.data.current_page
             state.last_page = res.data.last_page
             const { data } = res.data;
@@ -45,6 +50,18 @@ export const gamesStore = {
             }
             state.lists = arr
         },
+        setPage (state, page) {
+            state.page = page
+        },
+        loadCategories (state, res) {
+            state.categories = res.data
+        },
+        setCategory (state, payload) {
+            state.category_item = payload.data.title
+        },
+        setClear (state) {
+            state.lists = []
+        },
 
     },
 
@@ -57,6 +74,12 @@ export const gamesStore = {
         },
         getLastPage( state ){
             return state.last_page;
+        },
+        getCategories( state ){
+            return state.categories;
+        },
+        getCategorySelect( state ){
+            return state.selectCategory;
         }
     }
 }

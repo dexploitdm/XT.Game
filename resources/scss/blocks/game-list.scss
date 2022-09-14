@@ -121,5 +121,17 @@ $game-adaptive-breakpoints: (
         margin-left: auto;
     }
 }
-
-
+.category-lists {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px 0 20px;
+    transition: .3s;
+    &_item {
+        margin: 10px;
+        transition: .3s;
+    }
+    a {
+        display: block;
+    }
+}

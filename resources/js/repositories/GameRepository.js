@@ -11,8 +11,8 @@ export default {
     getCategories() {
         return Client.get('/api/get_categories');
     },
-    getGamesCategory(id) {
-        return Client.get(`/api/get_cat_games/${id}`);
+    getGamesCategory(page, id) {
+        return Client.get(`/api/get_cat_games/${id}?page=${page}`);
     },
 
     // MANY OTHER ENDPOINT RELATED STUFFS

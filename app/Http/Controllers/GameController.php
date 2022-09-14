@@ -152,20 +152,20 @@ class GameController extends Controller
     }
 
     public function get_cat_games($id) {
-        $category = Category::find($id);
+        $category = Category::find($id)->toArray();
         $games = Games::with('categories')
             ->whereHas('categories', function($q) use ($id) {
                 $q->where('id', $id);
-            })->get();
+            })->paginate(27)->toArray();
 
         #Получение списка категорий с привязаными играми
 //        $categories = Category::with(['games' => function ($q) {
 //            $q->orderBy('created_at', 'desc');
 //        }])->paginate(10);
 
+        $info = array_merge($games, $category);
         return response()->json([
-            'games' => $games,
-            'category' => $category
+            'data' => $info,
         ]);
     }
 }
