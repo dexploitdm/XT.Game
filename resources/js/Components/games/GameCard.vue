@@ -1,9 +1,14 @@
 <script setup>
-import { Link } from '@inertiajs/inertia-vue3';
+import {useStore} from 'vuex'
+import {computed} from "vue";
+
+const store = useStore()
 
 const props = defineProps({
     game: Object
 })
+
+const gameInCart = computed(() => store.getters.getCarts)
 
 const salePercent = (price, sale) => {
     const percent = ((price - sale)/price) *100
@@ -22,6 +27,14 @@ const priceFormat = (price, sale, rate) => {
     let totalPrice = price
     if(sale) {totalPrice = sale}
     return (totalPrice * rate).toFixed(2)
+}
+
+const addToCart = async (id) => {
+    await store.dispatch("setCarts", id);
+    isCart(id)
+}
+const isCart = (id) => {
+    return gameInCart.value.includes(id)
 }
 </script>
 <template>
@@ -42,7 +55,8 @@ const priceFormat = (price, sale, rate) => {
                 / {{ priceFormat(game.price, game.sale, $inertia.page.props.rate) }} RU
             </div>
             <div class="game-list-pay">
-                <button class="xt-btn color-2">В корзину</button>
+                <button v-if="isCart(game.id)" class="xt-btn color-8">В корзине</button>
+                <button v-else class="xt-btn color-2" @click="addToCart(game.id)">В корзину</button>
             </div>
         </div>
     </div>

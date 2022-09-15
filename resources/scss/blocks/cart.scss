@@ -1,0 +1,20 @@
+.cart-icon {
+    margin-right: 20px;
+    cursor: pointer;
+    position: relative;
+    svg {
+        font-size: 2em;
+        color: $color-dark;
+    }
+    &-count {
+        position: absolute;
+        background-color: $color-red;
+        color: white;
+        border-radius: 50%;
+        width: 22px;
+        height: 21px;
+        text-align: center;
+        right: -4px;
+        top: -4px;
+    }
+}
