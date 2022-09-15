@@ -12,7 +12,7 @@ const props = defineProps({
 })
 
 const games = computed(() => store.getters.getGamesStore)
-const category = computed(() => store.getters.getCategorySelect)
+const category = computed(() => store.getters.getCategoryItem)
 
 onMounted(async () => {
     await store.dispatch("clearGames");

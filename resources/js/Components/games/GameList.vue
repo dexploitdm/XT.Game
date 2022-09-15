@@ -6,8 +6,6 @@ import GameCard from '@/Components/games/GameCard.vue';
 import SaleCheckbox from '@/Components/Checkbox.vue';
 import { useStore } from 'vuex'
 import Repository from "@/repositories/RepositoryFactory";
-
-
 const GameRepository = Repository.get("games");
 const store = useStore()
 
