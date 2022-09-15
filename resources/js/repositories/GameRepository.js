@@ -5,6 +5,9 @@ export default {
     get(id, select) {
         return Client.get(`/api/get_all_games?page=${id}&select=${select}`);
     },
+    getGame(id) {
+        return Client.get(`/api/get_game/${id}`);
+    },
     search(data) {
         return Client.get(`/api/search?search=${data}`);
     },

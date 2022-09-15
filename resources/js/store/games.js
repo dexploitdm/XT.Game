@@ -3,7 +3,8 @@ const GameRepository = Repository.get("games");
 
 export const gamesStore = {
     state: () => ({
-        lists: [],
+        games: [],
+        game_item: [],
         page: 1,
         last_page: 1,
         categories: [],
@@ -13,6 +14,9 @@ export const gamesStore = {
     actions: {
         async getGames({ state, commit }, payload) {
             commit('loadGames', await GameRepository.get(state.page, payload))
+        },
+        async getGameItem({ commit }, payload) {
+            commit('loadGameItem', await GameRepository.getGame(payload))
         },
         selectPage ({ commit }, data) {
             commit('setPage', data)
@@ -39,7 +43,7 @@ export const gamesStore = {
             state.last_page = res.data.last_page
             const { data } = res.data;
             let arr = []
-            const prevData = state.lists
+            const prevData = state.games
             if(prevData.length > 0) {
                 for (let i = 0; i < prevData.length; i++) {
                     arr.push(prevData[i])
@@ -48,7 +52,10 @@ export const gamesStore = {
             for (let i = 0; i < data.length; i++) {
                     arr.push(data[i])
             }
-            state.lists = arr
+            state.games = arr
+        },
+        loadGameItem (state, res) {
+            state.game_item = res.data
         },
         setPage (state, page) {
             state.page = page
@@ -60,14 +67,17 @@ export const gamesStore = {
             state.category_item = payload.data.title
         },
         setClear (state) {
-            state.lists = []
+            state.games = []
         },
 
     },
 
     getters: {
         getGamesStore( state ){
-            return state.lists;
+            return state.games;
+        },
+        getGameItem( state ){
+            return state.game_item;
         },
         getPage( state ){
             return state.page;
@@ -78,8 +88,8 @@ export const gamesStore = {
         getCategories( state ){
             return state.categories;
         },
-        getCategorySelect( state ){
-            return state.selectCategory;
+        getCategoryItem( state ){
+            return state.category_item;
         }
     }
 }

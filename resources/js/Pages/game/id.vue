@@ -1,22 +1,20 @@
 <script setup>
 import BreezeMainLayout from '@/Layouts/Main.vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
-import {onMounted, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
+import { useStore } from 'vuex'
+const store = useStore()
 
 const props = defineProps({
     id: Number
 })
 
-let game = ref([])
+const game = computed(() => store.getters.getGameItem)
 
 onMounted(async () => {
-    await getGames(props.id)
+    await store.dispatch("getGameItem", props.id);
 })
 
-const getGames = async (id) => {
-    let response = await axios.get(`/api/get_game/${id}`);
-    game.value = response.data
-}
 
 </script>
 
@@ -27,12 +25,9 @@ const getGames = async (id) => {
 
         <div class="container bg-w" style="margin-top: 50px;">
             <div>{{ game.title }}</div>
-
-            <div class="buttons" style="max-width: 700px; margin: auto;">
-                <button class="xt-btn color-1">Приобрести</button>
-
-
-            </div>
+<!--            <div :style="'background-image: url(/uploads/games/'+ game.cover +')'"></div>-->
+            <img :src="'/uploads/games/' + game.cover" style="max-width: 200px">
+            <div v-html="game.content"></div>
 
         </div>
 
