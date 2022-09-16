@@ -11,7 +11,12 @@ export const cartStore = {
 
     mutations: {
         loadCarts: (state, payload) => {
-            state.carts.push(payload)
+            const game = {
+                id: payload.id,
+                title: payload.title,
+                cover: payload.cover
+            }
+            state.carts.push(game)
             localStorage.setItem('carts', JSON.stringify(state.carts));
         },
 

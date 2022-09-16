@@ -1,4 +1,5 @@
 <script setup>
+import { Link } from '@inertiajs/inertia-vue3';
 import {useStore} from 'vuex'
 import {computed} from "vue";
 
@@ -29,12 +30,13 @@ const priceFormat = (price, sale, rate) => {
     return (totalPrice * rate).toFixed(2)
 }
 
-const addToCart = async (id) => {
-    await store.dispatch("setCarts", id);
+const addToCart = async (data) => {
+    console.log(data.id)
+    await store.dispatch("setCarts", data);
     isCart(id)
 }
 const isCart = (id) => {
-    return gameInCart.value.includes(id)
+    return gameInCart.value.some(item => item.id === id);
 }
 </script>
 <template>
@@ -56,7 +58,7 @@ const isCart = (id) => {
             </div>
             <div class="game-list-pay">
                 <button v-if="isCart(game.id)" class="xt-btn color-8">В корзине</button>
-                <button v-else class="xt-btn color-2" @click="addToCart(game.id)">В корзину</button>
+                <button v-else class="xt-btn color-2" @click="addToCart(game)">В корзину</button>
             </div>
         </div>
     </div>
