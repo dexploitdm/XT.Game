@@ -1,11 +1,11 @@
+<script setup>
+import { Link } from '@inertiajs/inertia-vue3';
+</script>
 <template>
     <div class="logo-box">
-        <a href="/">
-            <img class="logo-box-xg" src="/uploads/others/xbox_g.png">
-        </a>
-        <div class="logo-box-desc">
-            <div class="logo-box-text">XT.Game</div>
-            <div class="logo-box-title">Продажа игр через Турцию</div>
-        </div>
+        <Link :href="route('home')">
+            <img class="logo-box-xg" src="/uploads/others/xt_logo.png">
+            <div class="logo-box-text">XT.Game#999</div>
+        </Link>
     </div>
 </template>
