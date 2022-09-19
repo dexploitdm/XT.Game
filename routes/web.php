@@ -20,12 +20,13 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('home');
 
 
 Route::get('/game/{id}', function ($id) {return Inertia::render('game/id',['id' => $id]);})->name('show');
 Route::get('/category/{id}', function ($id) {return Inertia::render('category/id',['id' => $id]);})->name('showCat');
 Route::get('/selection/{id}', function ($id) {return Inertia::render('selection/id',['id' => $id]);})->name('showSelection');
+Route::get('/cart', function () {return Inertia::render('cart/index');})->name('cart');
 //TODO: Или в контроллере достать модель и передать в вид
 //Route::get('/game/{id}', [\App\Http\Controllers\HomeController::class, 'show']);
 
