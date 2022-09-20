@@ -35,6 +35,9 @@ export const gamesStore = {
         clearGames ({ commit }) {
             commit('setClear')
         },
+        clearGameItem ({ commit }) {
+            commit('setClearItem')
+        },
     },
 
     mutations: {
@@ -68,6 +71,9 @@ export const gamesStore = {
         },
         setClear (state) {
             state.games = []
+        },
+        setClearItem (state) {
+            state.game_item = ''
         },
 
     },
