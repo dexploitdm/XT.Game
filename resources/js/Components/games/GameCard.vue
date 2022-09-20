@@ -31,9 +31,8 @@ const priceFormat = (price, sale, rate) => {
 }
 
 const addToCart = async (data) => {
-    console.log(data.id)
     await store.dispatch("setCarts", data);
-    isCart(id)
+    isCart(data.id)
 }
 const isCart = (id) => {
     return gameInCart.value.some(item => item.id === id);
@@ -57,7 +56,9 @@ const isCart = (id) => {
                 / {{ priceFormat(game.price, game.sale, $inertia.page.props.rate) }} RU
             </div>
             <div class="game-list-pay">
-                <button v-if="isCart(game.id)" class="xt-btn color-8">В корзине</button>
+                <Link v-if="isCart(game.id)" :href="route('cart')">
+                    <button class="xt-btn color-8">В корзине</button>
+                </Link>
                 <button v-else class="xt-btn color-2" @click="addToCart(game)">В корзину</button>
             </div>
         </div>
