@@ -8,7 +8,7 @@ export const gamesStore = {
         page: 1,
         last_page: 1,
         categories: [],
-        category_item: []
+        category_item: ''
     }),
 
     actions: {

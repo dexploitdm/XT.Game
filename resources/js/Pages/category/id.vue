@@ -1,33 +1,37 @@
 <script setup>
 import BreezeMainLayout from '@/Layouts/Main.vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
-import {computed, onDeactivated, onMounted, ref} from "vue";
+import {computed, onDeactivated, onMounted, onUnmounted, ref} from "vue";
 import LoaderBox from '@/Components/LoaderBox.vue';
 import GameCard from '@/Components/games/GameCard.vue';
+import GameCategories from '@/Components/games/GameCategory.vue';
 import { useStore } from 'vuex'
 const store = useStore()
 
 const props = defineProps({
-    id: Number
+    id: String
 })
 
 const games = computed(() => store.getters.getGamesStore)
 const category = computed(() => store.getters.getCategoryItem)
+
+let isLoad = ref(true)
+let Loader = ref(true)
+let isViewSale = ref(false)
 
 onMounted(async () => {
     await store.dispatch("clearGames");
     await store.dispatch("selectPage", 1);
     await store.dispatch("getGamesCategory", props.id);
     window.addEventListener('scroll', handleScroll);
+    if(store.getters.getLastPage === store.getters.getPage) {
+        Loader.value = false
+    }
 })
 
-onDeactivated(async () => {
+onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll);
 })
-
-let isLoad = ref(true)
-let Loader = ref(true)
-let isViewSale = ref(false)
 
 const handleScroll = (event) => {
     if (Math.round(window.scrollY) + window.innerHeight >= (document.body.scrollHeight - 700)) {
@@ -53,22 +57,23 @@ const limitTimeLoad = () => {
 <template>
     <Head title="Game" />
     <BreezeMainLayout>
-       this {{ props.id }} / {{ category }}
 
-        <div class="container bg-w" style="margin-top: 50px;">
+        <div class="container cat-games">
+            <div class="container-box">
 
-            <div class="game-list">
-                <div class="game-list-item" v-for="item in games"  data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                    <GameCard :game="item"/>
+                <div class="cat-games-title">{{ category }}</div>
+                <div class="game-list">
+                    <div class="game-list-item" v-for="item in games"  data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                        <GameCard :game="item"/>
+                    </div>
                 </div>
-
             </div>
 
             <LoaderBox v-if="Loader"/>
 
+            <GameCategories />
+
         </div>
-
-
 
     </BreezeMainLayout>
 </template>
