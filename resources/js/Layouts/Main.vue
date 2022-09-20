@@ -30,8 +30,11 @@ const getInfo = async () => {
         <div class="header-menu">
 
             <div class="cart-icon">
-                <div class="cart-icon-count">{{ gameInCart.length }}</div>
-                <icon-account-box />
+                <Link :href="route('cart')">
+                    <div class="cart-icon-count">{{ gameInCart.length }}</div>
+                    <icon-account-box />
+                </Link>
+
             </div>
 
             <div v-if="canLogin" class="header-menu-auth">
@@ -52,6 +55,11 @@ const getInfo = async () => {
         <slot />
     </main>
     <footer>
-        <h2>footer</h2>
+        <div class="f-logo">
+            <Logo :link="true"/>
+        </div>
+        <div class="f-desc">
+            XT.Game ©Copyright 2022
+        </div>
     </footer>
 </template>
