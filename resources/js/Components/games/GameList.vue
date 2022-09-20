@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, computed, onDeactivated, ref} from 'vue';
+import {onMounted, onUnmounted, computed, onDeactivated, ref} from 'vue';
 import { Link } from '@inertiajs/inertia-vue3';
 import LoaderBox from '@/Components/LoaderBox.vue';
 import GameCard from '@/Components/games/GameCard.vue';
@@ -12,11 +12,12 @@ const store = useStore()
 const games = computed(() => store.getters.getGamesStore)
 
 onMounted(async () => {
+    await store.dispatch("clearGames");
     await store.dispatch("getGames", { self: this });
     window.addEventListener('scroll', handleScroll);
 })
 
-onDeactivated(async () => {
+onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll);
 })
 
@@ -66,11 +67,13 @@ const checkSale = async () => {
 <template>
     <div class="container">
         <div class="container-box">
-
-            <label class="flex items-center">
+            <label class="x-game-sale flex items-center bg-w">
                 <SaleCheckbox name="remember" v-model:checked="isViewSale" @update:checked="checkSale"/>
-                <span class="ml-2 text-sm text-gray-600">Показывать только со скидкой {{isViewSale}}</span>
+                <span class="ml-2 text-sm text-gray-600">Показывать только со скидкой</span>
             </label>
+        </div>
+        <div class="container-box">
+
             <div class="game-list">
                 <div class="game-list-item" v-for="item in games"  data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <GameCard :game="item"/>
