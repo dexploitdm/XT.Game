@@ -7,6 +7,13 @@ $game-adaptive-breakpoints: (
     'xl': 1200px,
 );
 
+.x-game-sale {
+    max-width: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
 
 .game-list {
     display: grid;
@@ -29,9 +36,24 @@ $game-adaptive-breakpoints: (
         position: relative;
         background-color: $primal-bg2;
         transition: .3s;
+        &:after {
+            content: "";
+            width: 103%;
+            height: 109%;
+            position: absolute;
+            top: -7px;
+            border-radius: 28px;
+            left: -6px;
+            z-index: -1;
+            transition: .1s;
+        }
         &:hover {
             box-shadow: 0 6px 20px rgb(140 124 241 / 33%), 0 -10px 20px rgb(255 255 255 / 40%), 0 0 14px rgb(251 226 0 / 17%);
+            &:after {
+                border: 4px solid #8E37D7;
+            }
         }
+
     }
     &-cover {
         border-radius: 20px 0 0 20px;
@@ -52,7 +74,6 @@ $game-adaptive-breakpoints: (
             border-radius: 16px 0 0 16px;
             background-position: 50% 50%;
             background-repeat: no-repeat;
-            background-size: cover;
             position: relative;
             aspect-ratio: 1/1;
             background-size: contain;
@@ -133,5 +154,83 @@ $game-adaptive-breakpoints: (
     }
     a {
         display: block;
+    }
+}
+.cat-games {
+    min-height: 1000px;
+    padding-top: 130px;
+    transition: .3s;
+    &-title {
+        text-align: center;
+        font-size: 52px;
+        font-weight: 700;
+        color: white;
+    }
+    @media (max-width: 740px) {
+        min-height: 600px;
+    }
+}
+
+.single-game {
+    display: flex;
+    padding: 120px 0 40px;
+    transition: .3s;
+    &-layout {
+        min-height: 760px;
+        transition: .3s;
+    }
+    &-cover {
+        transition: .3s;
+        img {
+            max-width: 400px;
+            transition: .3s;
+        }
+    }
+    &-content {
+        font-size: 18px;
+        padding-left: 30px;
+        transition: .3s;
+        &_title {
+            font-family: "Alfa Slab One", cursive;
+            font-size: 28px;
+            color: $color-dark;
+            transition: .3s;
+            @media (max-width: 768px) {
+                font-size: 22px;
+            }
+        }
+        &_desc {
+            padding: 20px 0;
+            transition: .3s;
+        }
+        &_text {
+            padding-bottom: 40px;
+            transition: .3s;
+        }
+        @media (max-width: 768px) {
+            font-size: 16px;
+        }
+    }
+    &-info {
+        display: flex;
+        align-items: center;
+        &_price {
+            padding-right: 20px;
+        }
+    }
+    &-load {
+        padding-top: 310px;
+    }
+    @media (max-width: 980px) {
+        flex-wrap: wrap;
+        &-cover {
+            margin: auto;
+            padding-bottom: 20px;
+        }
+        &-content {
+            &_title {
+                text-align: center;
+            }
+        }
     }
 }

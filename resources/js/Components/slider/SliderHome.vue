@@ -79,7 +79,8 @@ const priceFormat = (price, sale, rate) => {
             @swiper="onSwiper"
             @slideChange="onSlideChange"
         >
-            <swiper-slide v-for="item in sliders" :style="'background-image: url('+ item.bg +')'">
+<!--            :style="'background-image: url('+ item.bg +')'"-->
+            <swiper-slide v-for="item in sliders">
                 <div class="x-slide-item">
                     <div class="x-slide-item-box">
                         <div class="x-slide-content">

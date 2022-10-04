@@ -6,7 +6,7 @@ import {useStore} from "vuex";
 const store = useStore()
 
 const props = defineProps({
-    id: Number
+    id: String
 })
 
 const selection = computed(() => store.getters.getSelectionGames)
@@ -19,6 +19,14 @@ onMounted(async () => {
 <template>
     <Head title="Game" />
     <BreezeMainLayout>
+
+
+        <div class="container cat-games">
+            <div class="container-box">
+
+
+            </div>
+        </div>
        this {{ props.id }}
 
         <div class="container bg-w" style="margin-top: 50px;">

@@ -16,13 +16,19 @@ onMounted(async () => {
 <template>
     <div class="container">
         <div class="container-box">
+            <div class="selection">
+                <div v-for="item in selections" class="selection-item">
+                    <Link :href="route('showSelection', item.id)">
+                        <div class="selection-item-cover" :style="'background-image: url(/uploads/selection/'+ item.cover +')'">
+                            <div class="selection-item-title">
+                                {{ item.title}}
+                            </div>
+                        </div>
+                    </Link>
 
-            <div v-for="item in selections">
-                <Link :href="route('showSelection', item.id)">
-                    {{ item.title}}
-                </Link>
-
+                </div>
             </div>
+
         </div>
     </div>
 </template>

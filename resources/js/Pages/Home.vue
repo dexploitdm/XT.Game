@@ -14,7 +14,6 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
     <Head title="Покупайте игры по выгодной цене" />
     <BreezeMainLayout>
 
-
         <SliderHome />
 
         <SelectionList />
