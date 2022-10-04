@@ -39,6 +39,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/lk/game', \App\Http\Controllers\GameController::class);
     Route::resource('/lk/category', \App\Http\Controllers\CategoryController::class);
     Route::resource('/lk/selection', \App\Http\Controllers\SelectionController::class);
+    Route::resource('/lk/slider', \App\Http\Controllers\SliderController::class);
 
 });
 

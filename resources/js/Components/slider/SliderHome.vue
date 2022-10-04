@@ -69,49 +69,8 @@ const priceFormat = (price, sale, rate) => {
 </script>
 <template>
     <div class="x-slide">
-        <swiper
-            slides-per-view="auto"
-            :slides-per-group="1"
-            :loop="true"
-            :space-between="20"
-            :autoHeight="true"
-            :freeMode="true"
-            @swiper="onSwiper"
-            @slideChange="onSlideChange"
-        >
-<!--            :style="'background-image: url('+ item.bg +')'"-->
-            <swiper-slide v-for="item in sliders">
-                <div class="x-slide-item">
-                    <div class="x-slide-item-box">
-                        <div class="x-slide-content">
-                            <div class="x-slide-content_title">{{ item.title }}
-                                <div class="x-slide-content_title__mini">(Xbox One / Xbox Series S,X)</div>
-                            </div>
-                            <div class="x-slide-content_desc">{{ item.desc }}</div>
-                            <div class="x-slide-info">
-                                <div class="x-slide-info-box">
-                                    <div class="x-slide-info_price">
-                                        <div class="x-slide-info_price__all">
-                                            {{ priceFormat(item.price, item.sale, $inertia.page.props.rate) }} RU (<span  :class="{ active: item.sale }">{{ item.price }} TRY</span>)
-                                        </div>
-                                        <div class="x-slide-info_price__sale" v-if="item.sale">
-                                            {{ item.sale }} TRY   <span class="x-sale">- {{ salePercent(item.price, item.sale) }} %</span>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="xt-btn color-3">Приобрести</button>
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="x-slide-cover">
-                            <img :src="item.cover" />
-                        </div>
-                    </div>
-                </div>
-            </swiper-slide>
-
-
-        </swiper>
+        <div v-for="item in sliders">
+            {{ item.title }}
+        </div>
     </div>
 </template>
