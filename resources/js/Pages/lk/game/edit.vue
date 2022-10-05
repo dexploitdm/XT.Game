@@ -120,37 +120,12 @@ const updateGame = () => {
 
                         <input type="number" class="" v-model="form.sale"  placeholder="sale"/>
 
-                        <el-select v-model="form.category_id" placeholder="Select">
-                            <el-option
-                                v-for="item in category"
-                                :key="item.id"
-                                :label="item.title"
-                                :value="item.id"
-                            />
-                        </el-select>
+                    
 
                         xbox one
-                        <el-switch
-                            v-model="form.xbox_one"
-                            class="mt-2"
-                            style="margin-left: 24px"
-                            inline-prompt
-                            active-value="1"
-                            inactive-value="0"
-                            :active-icon="Check"
-                            :inactive-icon="Close"
-                        />
+                       
                         xbox series form:
-                        <el-switch
-                            v-model="form.xbox_sx"
-                            class="mt-2"
-                            style="margin-left: 24px"
-                            inline-prompt
-                            active-value="1"
-                            inactive-value="0"
-                            :active-icon="Check"
-                            :inactive-icon="Close"
-                        />
+                       
 
                         <img :src="getCover()" src="" >
 
