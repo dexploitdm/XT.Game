@@ -1,0 +1,17 @@
+{
+    "name": "XT.Game",
+    "short_name": "XTG",
+    "start_url": "/index.php",
+    "background_color": "#333333",
+    "description": "Продажа игр для xbox через Турцию",
+    "display": "fullscreen",
+    "theme_color": "#333333",
+    "icons": [
+        {
+            "src": "logo.PNG",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
