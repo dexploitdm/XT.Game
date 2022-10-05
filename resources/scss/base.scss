@@ -10,9 +10,12 @@ body {
     background-attachment: fixed;
     font-family: 'Montserrat', sans-serif;
     background: $primal-bg;
-    background: url("/images/bg.jpg") 50% 50% / cover;
+    background: url("/images/im.jpg") 50% 50% / cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+@supports (background-image: -webkit-image-set(url('/images/im.webp') 1x)) {
+    body {background-image: -webkit-image-set(url('/images/im.webp') 1x) }
 }
 
 #app {
