@@ -1,11 +1,8 @@
 header {
-    //position: fixed;
+    position: fixed;
     max-width: 100%;
     margin: 0;
     padding: 2em;
-    //background: $base-bg;
-    //box-shadow: 0 0 6em 0 rgba(black, 0.4), 0 0 1em 0 rgba(black, 0.3);
-    overflow: hidden;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -54,6 +51,9 @@ header {
             }
         }
     }
+}
+.navbar {
+    border-radius: 10px;
 }
 .container {
     margin: auto;
