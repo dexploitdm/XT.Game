@@ -18,7 +18,7 @@ onMounted(async () => {
 
                 <div class="category-lists_item" v-for="item in categories">
                     <Link :href="route('showCat', item.id)">
-                        <button type="button" class="xt-btn color-3">{{ item.title }}</button>
+                        <button type="button" class="xt-btn color-5">{{ item.title }}</button>
                     </Link>
                 </div>
             </div>
