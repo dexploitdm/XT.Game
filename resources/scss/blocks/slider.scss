@@ -1,6 +1,29 @@
-.x-slide {
-    padding-top: 80px;
+.x-screen {
+    padding: 140px 0 40px;
+    display: flex;
+    justify-content: space-between;
     transition: .3s;
+    h1 {
+        font-family: 'Rubik Dirt', cursive;
+        font-size: 60px;
+        letter-spacing: 1px;
+        line-height: 68px;
+        color: white;
+        cursor: default;
+    }
+    p, li {
+        color: white;
+        font-size: 18px;
+    }
+    &-content {
+
+    }
+    &-cover {
+        source, img {
+            transform: rotate(17deg);
+        }
+    }
+
 }
 .swiper {
     width: 100%;
