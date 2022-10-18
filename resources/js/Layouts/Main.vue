@@ -30,19 +30,19 @@ const getInfo = async () => {
             <div class="flex-1">
                 <Logo/>
             </div>
-            <div class="flex-none">
+            <div v-if="canLogin" class="flex-none">
                 <div class="header-menu">
-                    <div v-if="canLogin" class="header-menu-auth">
-                        <Link v-if="$page.props.auth.user" :href="route('dashboard')" class="xt-btn color-11">
+                    <div class="header-menu-auth">
+                        <Link v-if="$page.props.auth.user" :href="route('dashboard')" class="xt-btn color-5">
                             Личный кабинет
                         </Link>
                         <template v-else>
-                            <Link :href="route('login')" class="xt-btn color-3 x-marr20">Вход</Link>
-                            <Link v-if="canRegister" :href="route('register')" class="xt-btn color-11">Регистрация</Link>
+                            <Link :href="route('login')" class="xt-btn color-10 x-marr20">Вход</Link>
+                            <Link v-if="canRegister" :href="route('register')" class="xt-btn color-5">Регистрация</Link>
                         </template>
                     </div>
                 </div>
-                <div class="dropdown dropdown-end">
+                <div class="cart dropdown dropdown-end">
                     <label tabindex="0" class="btn btn-ghost btn-circle">
                         <div class="indicator">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -55,17 +55,16 @@ const getInfo = async () => {
                     </label>
                     <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
                         <div class="card-body">
-                            <span class="font-bold text-lg">{{ gameInCart.length }} игр</span>
-                            <span class="text-info">Subtotal: $999</span>
+                            <span class="font-bold">Количество продуктов: {{ gameInCart.length }}</span>
                             <div class="card-actions">
                                 <Link :href="route('cart')">
-                                    <button class="btn btn-primary btn-block">Посмотреть корзину</button>
+                                    <button class="xt-btn color-10">Посмотреть корзину</button>
                                 </Link>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="dropdown dropdown-end">
+                <div v-if="$page.props.auth.user" class="profile dropdown dropdown-end">
                     <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                         <div class="w-10 rounded-full">
                             <picture>
@@ -77,12 +76,16 @@ const getInfo = async () => {
                         class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li>
                             <a class="justify-between">
-                                Profile
+                                Мои заказы
                                 <span class="badge">New</span>
                             </a>
                         </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
+                        <li><a>Настройки</a></li>
+                        <li>
+                            <Link :href="route('logout')" method="post">
+                                Выход
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </div>

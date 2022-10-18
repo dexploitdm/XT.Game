@@ -7,10 +7,14 @@ header {
     justify-content: space-between;
     width: 100%;
     z-index: 9;
+    .profile {
+        margin-left: 10px;
+    }
 }
 .header-menu {
     display: flex;
     align-items: center;
+    margin-right: 10px;
     &-auth {
         display: flex;
     }
