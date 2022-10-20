@@ -43,6 +43,9 @@ header {
         margin-left: -3px;
         z-index: 0;
         transition: .3s;
+        @media (min-width: 1440px) {
+            font-size: 0.8vw;
+        }
     }
     a {
         display: flex;
@@ -58,15 +61,6 @@ header {
 .navbar {
     border-radius: 10px;
 }
-.container {
-    margin: auto;
-    transition: .3s;
-    &.xx-full {
-        @media (max-width: 1024px) {
-            max-width: 100%;
-        }
-    }
-}
 .bg-w {
     background: $base-bg;
 }
@@ -80,10 +74,11 @@ footer {
     position: relative;
     max-width: 100%;
     margin: 0;
-    padding: 1em;
+    padding: 1em 0;
     background: $base-bg;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 80px;
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }

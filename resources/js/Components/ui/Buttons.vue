@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="container bg-w" style="margin-top: 50px;">
+    <div class="layout bg-w" style="margin-top: 50px;">
         <div>Игры</div>
 
         <div class="buttons" style="max-width: 700px; margin: auto;">

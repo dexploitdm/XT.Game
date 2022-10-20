@@ -68,8 +68,8 @@ const priceFormat = (price, sale, rate) => {
 
 </script>
 <template>
-    <div class="container">
-        <div class="container-box">
+    <div class="layout">
+        <div class="layout-box">
             <div class="x-screen">
                 <div class="x-screen-content">
                     <h1>Покупка игр для xbox через Турцию</h1>

@@ -65,8 +65,8 @@ const checkSale = async () => {
 
 </script>
 <template>
-    <div class="container">
-        <div class="container-box">
+    <div class="layout">
+        <div class="layout-box">
             <label class="x-game-sale flex items-center bg-w">
                 <SaleCheckbox name="remember" v-model:checked="isViewSale" @update:checked="checkSale"/>
                 <span class="ml-2 text-sm text-gray-600">Показывать только со скидкой</span>

@@ -12,8 +12,8 @@ onMounted(async () => {
 
 </script>
 <template>
-    <div class="container">
-        <div class="container-box">
+    <div class="layout">
+        <div class="layout-box">
             <div class="category-lists">
 
                 <div class="category-lists_item" v-for="item in categories">

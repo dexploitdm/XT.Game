@@ -95,11 +95,17 @@ const getInfo = async () => {
         <slot/>
     </main>
     <footer>
-        <div class="f-logo">
-            <Logo :link="true"/>
-        </div>
-        <div class="f-desc">
-            XT.Game ©Copyright 2022
+        <div class="layout">
+            <div class="layout-box">
+                <div class="footer">
+                    <div class="f-logo">
+                        <Logo :link="true"/>
+                    </div>
+                    <div class="f-desc">
+                        XT.Game ©Copyright 2022
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 </template>

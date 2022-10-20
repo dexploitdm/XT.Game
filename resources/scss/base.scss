@@ -12,25 +12,42 @@ body {
     margin: 0;
     line-height: inherit;
     -webkit-font-smoothing: antialiased;
-    background-attachment: fixed;
-    background: $primal-bg;
-    background: url("/images/im.jpg") 50% 50% / cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-@supports (background-image: -webkit-image-set(url('/images/im.webp') 1x)) {
-    body {background-image: -webkit-image-set(url('/images/im.webp') 1x) }
 }
 
 #app {
-    background-color: rgba( black, .5 );
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.container-box {
-    padding: 0 30px;
+main {
+    flex-grow: 1;
+    background-attachment: fixed;
+    background: url("/images/cover.jpg") 50% 50% / cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+@supports (background-image: -webkit-image-set(url('/images/cover.webp') 1x)) {
+    main {background-image: -webkit-image-set(url('/images/cover.webp') 1x) }
+}
+.layout {
+    margin: auto;
     transition: .3s;
-    @media (max-width: 768px) {
-        padding: 0 15px;
+    &.xx-full {
+        @media (max-width: 1024px) {
+            max-width: 100%;
+        }
+    }
+    &-box {
+        padding: 0 9%;
+        transition: .3s;
+        @media (max-width: 1200px) {
+            padding: 0 7%;
+        }
+        @media (max-width: 768px) {
+            padding: 0 15px;
+        }
     }
 }
 
