@@ -140,6 +140,10 @@ $game-adaptive-breakpoints: (
     }
     &-pay {
         margin-left: auto;
+        .xt-btn {
+            padding: 5px 26px;
+            margin-top: 10px;
+        }
     }
 }
 .category-lists {
