@@ -174,6 +174,9 @@ $game-adaptive-breakpoints: (
         font-size: 50px;
         color: white;
         transition: .3s;
+        &.dark {
+            color: $bg-black;
+        }
         @media (min-width: 1440px) {
             font-size: 3.5vw;
         }
