@@ -49,10 +49,10 @@ const isCart = (id) => {
     <Head title="Game"/>
     <BreezeMainLayout>
 
-        <div class="bg-w">
+        <div class="bg-w single-game-box">
 
-            <div class="container xx-full">
-                <div class="container-box">
+            <div class="layout">
+                <div class="layout-box">
 
                     <div class="single-game-layout">
                         <div v-if="game.cover" class="single-game">
