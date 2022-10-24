@@ -27,7 +27,7 @@ const priceFormat = (price, sale, rate) => {
                 <div class="x-screen-item">
                     <h1>Покупка игр для xbox через Турцию</h1>
                     <div class="x-screen-content">
-                        <div>
+                        <div class="x-screen-content_desc">
                             <p>Какой нибудь текст</p>
                             <ul>
                                 <li>Только цифровые ключи.</li>
