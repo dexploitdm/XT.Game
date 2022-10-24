@@ -40,6 +40,7 @@ const handleScroll = (event) => {
             setTimeout(limitTimeLoad, 3500);
             if(store.getters.getLastPage > store.getters.getPage) {
                 let page = store.getters.getPage + 1
+                store.dispatch("selectPage", page);
                 store.dispatch("getGamesCategory", props.id);
             } else {
                 Loader.value = false
@@ -58,8 +59,8 @@ const limitTimeLoad = () => {
     <Head title="Game" />
     <BreezeMainLayout>
 
-        <div class="container cat-games">
-            <div class="container-box">
+        <div class="layout cat-games">
+            <div class="layout-box">
 
                 <div class="cat-games-title">{{ category }}</div>
                 <div class="game-list">
