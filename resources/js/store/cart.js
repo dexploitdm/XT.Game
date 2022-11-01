@@ -1,6 +1,9 @@
+import Repository from "@/repositories/RepositoryFactory";
+const OrderRepository = Repository.get("order");
 export const cartStore = {
     state: () => ({
         carts: [],
+        uid_pay: []
     }),
 
     actions: {
@@ -9,6 +12,12 @@ export const cartStore = {
         },
         async deleteItem({ commit }, payload) {
             commit('removeItemCarts', payload);
+        },
+        async payment({ commit }, payload) {
+            commit('setPayment', await OrderRepository.payment(payload))
+        },
+        async clearCart({ commit }) {
+            commit('clear_all')
         },
     },
 
@@ -30,6 +39,13 @@ export const cartStore = {
             })
             localStorage.setItem('carts', JSON.stringify(state.carts));
         },
+        setPayment: (state, res) => {
+            state.uid_pay = res.data
+        },
+        clear_all: (state) => {
+            state.carts = []
+            localStorage.removeItem("carts")
+        },
     },
 
     getters: {
@@ -39,6 +55,9 @@ export const cartStore = {
             }
 
             return state.carts;
+        },
+        getPayStatus( state ){
+            return state.uid_pay;
         },
     }
 }
