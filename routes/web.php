@@ -32,10 +32,12 @@ Route::get('/cart', function () {return Inertia::render('cart/index');})->name('
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {return Inertia::render('Dashboard');})->name('dashboard');
+    Route::get('/user/orders', function () {return Inertia::render('user/orders');})->name('orders');
 //    Route::get('/lk/game', function () {return Inertia::render('lk/game/list');})->name('GameList');
 //    Route::get('/lk/game/add', function () {return Inertia::render('lk/game/add');})->name('addGame');
 //    Route::get('/lk/game/edit/{id}', function () {return Inertia::render('lk/game/edit');})->name('editGame');
 
+    Route::resource('/lk/order', \App\Http\Controllers\OrderController::class);
     Route::resource('/lk/game', \App\Http\Controllers\GameController::class);
     Route::resource('/lk/category', \App\Http\Controllers\CategoryController::class);
     Route::resource('/lk/selection', \App\Http\Controllers\SelectionController::class);
