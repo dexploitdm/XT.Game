@@ -7,6 +7,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//TODO: Сделать только для авторизованых
+Route::post('/payment/{price}', [\App\Http\Controllers\OrderController::class, 'payment']);
+
+
 Route::get('/get_info', [\App\Http\Controllers\HomeController::class, 'info']);
 
 Route::get('/get_all_games', [\App\Http\Controllers\GameController::class, 'get_all_games']);
