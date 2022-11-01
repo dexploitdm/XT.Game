@@ -26,8 +26,11 @@ const getInfo = async () => {
         <div class="header-menu">
             <div class="header-menu-auth">
                 <template  v-if="$page.props.auth.user">
-                    <Link :href="route('dashboard')" class="xt-btn color-5">
+                    <Link v-if="$page.props.auth.user.id === 1" :href="route('dashboard')" class="xt-btn color-10 lk-enter" >
                         Личный кабинет
+                    </Link>
+                    <Link :href="route('orders')" class="xt-btn color-5">
+                        Мои заказы
                     </Link>
                     <Link :href="route('logout')" method="post" class="xt-btn color-10 lg:hidden">
                         Выход

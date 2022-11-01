@@ -31,6 +31,9 @@ header {
         margin-right: 10px;
         &-auth {
             display: flex;
+            .lk-enter {
+                margin-right: 10px;
+            }
         }
     }
     @media (max-width: 1024px){
