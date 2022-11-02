@@ -1,10 +1,10 @@
 <script setup>
 import BreezeMainLayout from '@/Layouts/Main.vue';
-import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
+import {Head, useForm} from '@inertiajs/inertia-vue3';
+import {Inertia} from "@inertiajs/inertia";
 import IconTrash from '~icons/fluent/delete-arrow-back-20-filled'
 import {computed, onMounted, ref} from "vue";
 import {useStore} from 'vuex'
-import {Inertia} from "@inertiajs/inertia";
 const store = useStore()
 
 const gameInCart = ref({})
@@ -82,7 +82,7 @@ const payment = async (rub) => {
             }
         })
         form.game_list = list
-        form.total_price = totalActive.value + ' / ' + rub + 'рублей'
+        form.total_price = totalActive.value + ' TL / ' + rub + 'рублей'
         form.uid_payment = payStatus
         await store.dispatch("clearCart");
         form.post('/lk/order')
