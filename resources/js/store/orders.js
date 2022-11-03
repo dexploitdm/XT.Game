@@ -13,10 +13,6 @@ export const ordersStore = {
     },
 
     mutations: {
-        clear_all: (state) => {
-            state.carts = []
-            localStorage.removeItem("carts")
-        },
         ordersUser: (state, res) => {
             state.list_user = res
         },

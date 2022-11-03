@@ -38,6 +38,9 @@ export const cartStore = {
                 if (el.id == payload) state.carts.splice(i, 1)
             })
             localStorage.setItem('carts', JSON.stringify(state.carts));
+            if(state.carts.length === 0) {
+                localStorage.removeItem("carts")
+            }
         },
         setPayment: (state, res) => {
             state.uid_pay = res.data
