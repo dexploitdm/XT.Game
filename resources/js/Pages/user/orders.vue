@@ -1,16 +1,24 @@
 <script setup>
 import BreezeMainLayout from '@/Layouts/Main.vue';
-import { Head, Link } from '@inertiajs/inertia-vue3';
-import IconTrash from '~icons/fluent/delete-arrow-back-20-filled'
+import { Head } from '@inertiajs/inertia-vue3';
+import LoaderBox from '@/Components/LoaderBox.vue';
+import IconReload from '~icons/ion/reload-circle'
 import {computed, onMounted, ref} from "vue";
 import {useStore} from 'vuex'
 const store = useStore()
 
-
+const list = computed(() => store.getters.getListUser)
+const isReload = ref(false)
 
 onMounted(async () => {
-
+    await store.dispatch("getOrders");
 })
+
+const reload = async () => {
+    isReload.value = true
+    await store.dispatch("getOrders");
+    setTimeout(() => isReload.value = false, 2000);
+}
 
 </script>
 
@@ -18,27 +26,56 @@ onMounted(async () => {
     <Head title="Покупайте игры по выгодной цене" />
     <BreezeMainLayout>
 
-        <div class="bg-w page-layout">
+        <div class="page-layout">
             <div class="layout">
                 <div class="layout-box">
-                    <div class="xt-cart">
-                        <h1 class="xt-title-1 dark">Выбраный список</h1>
-                     hfgh
-                        <div v-if="$page.props.flash.message" class="alert">
-                            {{ $page.props.flash.message }}
+                    <div class="bg-w xt-box xt-order">
+                        <h1 class="xt-title-1 dark">Список заказов</h1>
+                        <div v-if="$page.props.flash.message" class="alert alert-success shadow-lg">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                {{ $page.props.flash.message }}
+                            </div>
+                        </div>
+                        <div class="xt-order-block">
+                            <div class="xt-order-reload">
+                                 <p><span v-if="isReload">Обновление...</span><span v-else>Обновить</span></p><Icon-Reload @click="reload"/>
+                            </div>
+                        </div>
+                        <div class="xt-order-block xt-order-table">
+                            <div class="xt-order-table-flex table-container" role="table" aria-label="Destinations">
+                                <div class="flex-table header" role="rowgroup">
+                                    <div class="flex-row" role="columnheader">Список игр</div>
+                                    <div class="flex-row" role="columnheader">Платежный код</div>
+                                    <div class="flex-row" role="columnheader">Сумма</div>
+                                    <div class="flex-row" role="columnheader">Код активации</div>
+                                    <div class="flex-row" role="columnheader">Статус</div>
+                                </div>
+                                <div class="flex-table row" role="rowgroup" v-for="(item, i) in list.data">
+                                    <div class="flex-row" role="cell">
+                                        <div v-for="game in JSON.parse(item.game_list)">
+                                            {{game.title}}
+                                        </div>
+                                    </div>
+                                    <div class="flex-row" role="cell">{{ item.uid_payment }}</div>
+                                    <div class="flex-row" role="cell">{{ item.total_price }}</div>
+                                    <div class="flex-row" role="cell">
+                                        <span class="code-green" v-if="item.code">{{ item.code }}</span>
+                                        <span v-else-if="isReload">
+                                                <LoaderBox/>
+                                            </span>
+                                        <span v-else>Ожидайте..</span>
+                                    </div>
+                                    <div class="flex-row xt-order-status" role="cell">
+                                        <span :class="{ active: item.active }" v-if="item.active">Активен</span>
+                                        <span v-else>Закрыт</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
     </BreezeMainLayout>
 </template>

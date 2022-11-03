@@ -17,12 +17,14 @@ const appName = window.document.getElementsByTagName('title')[0]?.innerText || '
 import { gamesStore } from './store/games.js';
 import { selectionStore } from './store/selection.js';
 import { cartStore } from './store/cart.js';
+import { ordersStore } from './store/orders.js';
 
 const store = createStore({
     modules: {
         gamesStore,
         selectionStore,
         cartStore,
+        ordersStore,
     }
 })
 
