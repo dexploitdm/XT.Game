@@ -82,7 +82,7 @@ const payment = async (rub) => {
             }
         })
         form.game_list = list
-        form.total_price = totalActive.value + ' TL / ' + rub + 'рублей'
+        form.total_price = totalActive.value + ' TL / ' + rub + ' рублей'
         form.uid_payment = payStatus
         await store.dispatch("clearCart");
         form.post('/lk/order')
