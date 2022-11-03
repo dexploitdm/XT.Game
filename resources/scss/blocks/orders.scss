@@ -195,6 +195,12 @@
             }
         }
     }
+    .alert {
+        max-width: fit-content;
+        margin: auto;
+        background-color: $color-green;
+        color: white;
+    }
     @media (max-width: 980px) {
         .xt-title-1 {
             font-size: 36px;
