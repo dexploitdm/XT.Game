@@ -115,3 +115,11 @@ ul {
         }
     }
 }
+
+.table {
+    &.table-ws_off {
+        :where(th, td) {
+            white-space: normal;
+        }
+    }
+}
