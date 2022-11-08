@@ -6,5 +6,8 @@ export default {
     },
     getOrdersUser() {
         return Client.get(`/api/user/orders`);
-    }
+    },
+    search(data) {
+        return Client.get(`/api/search_order?search=${data}`);
+    },
 };

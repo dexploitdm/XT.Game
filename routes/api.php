@@ -10,6 +10,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user/orders', [\App\Http\Controllers\OrderController::class, 'getOrdersUser']);
     Route::post('/payment/{price}', [\App\Http\Controllers\OrderController::class, 'payment']);
+    Route::get('/search_order/', [\App\Http\Controllers\OrderController::class, 'searchOrdersByUID']);
 });
 
 Route::get('/get_info', [\App\Http\Controllers\HomeController::class, 'info']);

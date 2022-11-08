@@ -65,4 +65,14 @@ class OrderController extends Controller
         $order->save();
         return Redirect::route('orders.index')->with('message', 'Код выдан, заказ закрыт!');
     }
+
+    public function searchOrdersByUID(Request $request) {
+        $orders_pay = Order::query()
+            ->when($request->input('search'), function ($query, $search) {
+                $query->where('uid_payment', 'like', '%' . $search . '%');
+            })->paginate(8)
+            ->withQueryString();
+
+        return response()->json($orders_pay);
+    }
 }
