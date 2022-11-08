@@ -43,6 +43,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/lk/category', \App\Http\Controllers\CategoryController::class);
     Route::resource('/lk/selection', \App\Http\Controllers\SelectionController::class);
     Route::resource('/lk/slider', \App\Http\Controllers\SliderController::class);
+    Route::resource('/lk/orders', \App\Http\Controllers\OrderController::class);
 
 });
 
