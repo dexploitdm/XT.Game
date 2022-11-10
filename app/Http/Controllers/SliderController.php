@@ -60,6 +60,10 @@ class SliderController extends Controller
         return Redirect::route('slider.index');
     }
 
+    public function show($id) {
+
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
