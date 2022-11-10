@@ -3,6 +3,7 @@ import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import Pagination from '@/Components/Pagination.vue'
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import { Inertia } from "@inertiajs/inertia"
+import SearchOrders from '@/Components/other/SearchOrders.vue'
 import IconEdit from '~icons/clarity/note-edit-line'
 import { ref } from 'vue'
 
@@ -48,7 +49,7 @@ const listSearch = (e) => {
     <BreezeAuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Заголовок
+                Заявки
             </h2>
         </template>
 
@@ -95,49 +96,48 @@ const listSearch = (e) => {
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
 
-                        <Search-orders v-on:data="listSearch" />
-
-                        <div v-if="searchData" class="xt-order-search">
-                            <div v-for="item in searchData" class="xt-order-search-item">
-                                <div class="xt-order-search_block">
-                                    <div>{{JSON.parse(item.user).name}}</div>
-                                    {{JSON.parse(item.user).email}}
-                                </div>
-                                <div class="xt-order-search_block">
-                                    Платежный код: <br> {{ item.uid_payment }}
-                                </div>
-                                <div class="xt-order-search_block">
-                                    Сумма: <br> {{ item.total_price }}
-                                </div>
-                                <div class="xt-order-search_block">
-                                    <div class="avatar-group -space-x-6">
-                                        <div class="avatar" v-for="game in JSON.parse(item.game_list)">
-                                            <div class="w-12">
-                                                <img :src="'/uploads/games/'+ game.cover" />
+                        <div class="xt-order-search_x1">
+                            <Search-orders v-on:data="listSearch" />
+                            <div v-if="searchData" class="xt-order-search">
+                                <div v-for="item in searchData" class="xt-order-search-item">
+                                    <div class="xt-order-search_block">
+                                        <div>{{JSON.parse(item.user).name}}</div>
+                                        {{JSON.parse(item.user).email}}
+                                    </div>
+                                    <div class="xt-order-search_block">
+                                        Платежный код: <br> {{ item.uid_payment }}
+                                    </div>
+                                    <div class="xt-order-search_block">
+                                        Сумма: <br> {{ item.total_price }}
+                                    </div>
+                                    <div class="xt-order-search_block">
+                                        <div class="avatar-group -space-x-6">
+                                            <div class="avatar" v-for="game in JSON.parse(item.game_list)">
+                                                <div class="w-12">
+                                                    <img :src="'/uploads/games/'+ game.cover" />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div v-for="game in JSON.parse(item.game_list)">
-                                        {{game.title}} <br>
+                                        <div v-for="game in JSON.parse(item.game_list)">
+                                            {{game.title}} <br>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="xt-order-search_block">
-                                    Код: <br> {{ item.code }}
-                                </div>
-                                <div class="xt-order-search_block flex">
-                                    <div class="flex-row xt-order-status" role="cell">
-                                        <span :class="{ active: item.active }" v-if="item.active">Активен</span>
-                                        <span v-else>Закрыт</span>
+                                    <div class="xt-order-search_block">
+                                        Код: <br> {{ item.code }}
                                     </div>
-                                    <div class="xt-order-code">
-                                        <label for="my-modal-1"><Icon-edit @click="openModal(item)"/></label>
+                                    <div class="xt-order-search_block flex">
+                                        <div class="flex-row xt-order-status" role="cell">
+                                            <span :class="{ active: item.active }" v-if="item.active">Активен</span>
+                                            <span v-else>Закрыт</span>
+                                        </div>
+                                        <div class="xt-order-code">
+                                            <label for="my-modal-1"><Icon-edit @click="openModal(item)"/></label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        Заявки
 
                         <div class="overflow-x-auto w-full">
                             <table class="table w-full table-ws_off">
