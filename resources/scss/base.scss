@@ -52,7 +52,7 @@ main {
         }
     }
     &-box {
-        padding: 0 9%;
+        padding: 0 9% 1%;
         transition: .3s;
         @media (max-width: 1200px) {
             padding: 0 7%;
