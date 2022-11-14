@@ -129,3 +129,11 @@ footer {
         align-items: center;
     }
 }
+.alert {
+    max-width: fit-content;
+    margin: auto;
+}
+.alert-info {
+    background-color: transparent;
+    color: hsl(var(--inc, var(--nc)) / var(--tw-text-opacity));
+}

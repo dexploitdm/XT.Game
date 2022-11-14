@@ -1,4 +1,60 @@
+.x-form {
+    margin: auto;
+    &-title {
+        font-size: 2vw;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 32px;
+        @media (max-width: 1200px) {
+            font-size: 26px;
+        }
+    }
+    &-control {
+        max-width: 75%;
+        padding: 0 20px;
+        margin: auto auto 12px;
+        transition: .3s;
+        label {
+            display: block;
+            padding-bottom: 5px;
+            font-size: 1.1vw;
+            @media (max-width: 1200px) {
+                font-size: 14px;
+            }
+        }
+        &.error {
+            input {
+                border: 1px solid $color-red;
+            }
+        }
+    }
+    &-submit {
+        margin: 26px auto 0;
+    }
+    .alert {
+        margin-bottom: 30px;
+    }
+    @media (max-width: 768px) {
+        &-title {
+            font-size: 24px;
+        }
+        &-control {
+            max-width: 100%;
+        }
+
+    }
+}
 .x-input {
+    width: 100%;
+    font-size: 1vw;
+    padding: 2% 10px;
+    border-radius: 10px;
+    transition: .3s;
+    @media (max-width: 1200px) {
+        padding-top: 6px;
+        padding-bottom: 6px;
+        min-height: 40px;
+    }
     &-green {
         padding-left: 20px;
         padding-right: 20px;

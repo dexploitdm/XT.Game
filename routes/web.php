@@ -24,6 +24,7 @@ Route::get('/cart', function () {return Inertia::render('cart/index');})->name('
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/user/orders', function () {return Inertia::render('user/orders');})->name('orders');
+    Route::get('/user/settings', function () {return Inertia::render('user/settings');})->name('settings');
 });
 
 Route::middleware(['is_admin'])->group(function () {

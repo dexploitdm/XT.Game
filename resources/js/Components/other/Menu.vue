@@ -53,14 +53,12 @@ const getInfo = async () => {
                 </div>
             </label>
             <ul tabindex="0"
-                class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-32">
                 <li>
-                    <a class="justify-between">
-                        Мои заказы
-                        <span class="badge">New</span>
-                    </a>
+                    <Link :href="route('settings')">
+                        Настройки
+                    </Link>
                 </li>
-                <li><a>Настройки</a></li>
                 <li>
                     <Link :href="route('logout')" method="post">
                         Выход
