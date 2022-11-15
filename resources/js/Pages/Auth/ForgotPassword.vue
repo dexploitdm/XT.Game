@@ -24,24 +24,22 @@ const submit = () => {
         <Head title="Forgot Password" />
 
         <div class="mb-4 text-sm text-gray-600">
-            Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
+            Забыли свой пароль? Без проблем. Просто сообщите нам свой адрес электронной почты, и мы отправим вам ссылку для сброса пароля, которая позволит вам выбрать новый.
         </div>
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit" class="x-form-auth">
             <div>
                 <BreezeLabel for="email" value="Email" />
-                <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
+                <BreezeInput id="email" type="email" class="x-input x-input-border" v-model="form.email" required autofocus autocomplete="username" />
                 <BreezeInputError class="mt-2" :message="form.errors.email" />
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <BreezeButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Email Password Reset Link
-                </BreezeButton>
+                <button class="xt-btn color-10 ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">Сбросить пароль</button>
             </div>
         </form>
     </BreezeGuestLayout>

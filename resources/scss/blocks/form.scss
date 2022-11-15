@@ -34,6 +34,27 @@
     .alert {
         margin-bottom: 30px;
     }
+    &-auth {
+        label {
+            margin-bottom: 6px;
+        }
+        input {
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active{
+                -webkit-box-shadow: 0 0 0 30px #cfffc5  inset !important;
+            }
+        }
+
+    }
+    @media (max-width: 1360px) {
+        &-auth {
+            input {
+                font-size: 16px;
+            }
+        }
+    }
     @media (max-width: 768px) {
         &-title {
             font-size: 24px;
@@ -60,5 +81,8 @@
         padding-right: 20px;
         border-radius: 20px;
         border: 2px solid $color-green;
+    }
+    &-border {
+        border: 2px solid $color-dark;
     }
 }
