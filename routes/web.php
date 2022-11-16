@@ -29,7 +29,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::middleware(['is_admin'])->group(function () {
     Route::get('/dashboard', function () {return Inertia::render('Dashboard');})->name('dashboard');
-    Route::resource('/lk/slider', \App\Http\Controllers\SliderController::class);
     Route::resource('/lk/game', \App\Http\Controllers\Admin\GameController::class);
     Route::resource('/lk/category', \App\Http\Controllers\Admin\CategoryController::class);
     Route::resource('/lk/selection', \App\Http\Controllers\Admin\SelectionController::class);
