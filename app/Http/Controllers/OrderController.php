@@ -32,6 +32,7 @@ class OrderController extends Controller
 
     public function getOrdersUser() {
         $order = Order::where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
             ->take(10)
             ->get();
        return response()->json($order);
