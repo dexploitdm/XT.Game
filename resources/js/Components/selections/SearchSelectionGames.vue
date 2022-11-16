@@ -22,7 +22,6 @@ onMounted(async () => {
 })
 
 watch(search, (value) => {
-    //Inertia.get("/lk/selection/create", { search: value }, {preserveState: true,});
     getSearch(value);
 });
 
@@ -54,7 +53,17 @@ const trash = (id) => {
 </script>
 <template>
     <div class="sel-search">
-
+        <input
+            type="text"
+            v-model="search"
+            placeholder="Поиск по названию игры..."
+            class="x-input x-input-border"
+        />
+        <div class="sel-search-list">
+            <div v-for="item in games.data" class="sel-search-list_item">
+                <div @click="setGame(item)">Выбрать: {{ item.title }}</div>
+            </div>
+        </div>
         <div class="sel-search-preview">
             <div class="sel-search-preview-item" v-for="item in previewSelectGame" data-aos="fade-up">
                 <div class="sel-search-preview_trash" @click="trash(item.id)"><icon-account-box style="font-size: 1.2em; color: white"/></div>
@@ -62,21 +71,5 @@ const trash = (id) => {
                 <div class="sel-search-preview_title"><p>{{ item.title }}</p></div>
             </div>
         </div>
-
-
-
-        <input
-            type="text"
-            v-model="search"
-            placeholder="Search..."
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5 "
-        />
-
-        <div style="padding: 40px 0;">
-            <div  v-for="item in games.data">
-                <div @click="setGame(item)">Выбрать: {{ item.title }}</div>
-            </div>
-        </div>
-
     </div>
 </template>

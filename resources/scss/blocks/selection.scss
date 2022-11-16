@@ -3,10 +3,12 @@
         display: flex;
         justify-content: center;
         max-width: 900px;
-        margin: auto;
+        margin: 20px auto 10px;
+        flex-wrap: wrap;
+        transition: .3s;
         &-item {
-            margin: 0 10px;
-            box-shadow: 2px 2px 5px #e1d0d0;
+            margin: 0 10px 20px;
+            box-shadow: 2px 2px 5px #dcdcdc;
             border-radius: 0 0 10px 10px;
             max-width: 100px;
             position: relative;
@@ -29,6 +31,19 @@
             transition: .3s;
             &:hover {
                 box-shadow: 1px -1px 7px #835959;
+            }
+        }
+    }
+    &-list {
+        padding: 20px 0;
+        &_item {
+            font-size: 20px;
+            margin-bottom: 10px;
+            max-width: fit-content;
+            cursor: pointer;
+            transition: .3s;
+            &:hover {
+                color: $color-green;
             }
         }
     }
