@@ -37,7 +37,21 @@
             }
         }
     }
+    &.grid {
+        display: grid;
+        &_x3 {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+    @media (max-width: 980px) {
+        &.grid {
+            &_x3 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
     @media (max-width: 640px) {
+        &.grid ,
         &-item {
             display: block;
         }
@@ -50,6 +64,14 @@
         &-info {
             margin-top: 10px;
             margin-left: 0;
+        }
+        &.m-center {
+            .table-card-info {
+                text-align: center;
+            }
+            .table-card-info_actions {
+                justify-content: center;
+            }
         }
     }
 }

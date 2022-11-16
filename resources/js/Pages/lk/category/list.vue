@@ -18,13 +18,11 @@ defineProps({
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="xt-lk-title">Список категорий</div>
-                        <div class="">
-                            <Link :href="route('category.create')" class="xt-lk-create">
-                                <Icon-Create />
-                                <p>Добавить</p>
-                            </Link>
-                        </div>
-                        <div class="table-card">
+                        <Link :href="route('category.create')" class="xt-lk-create">
+                            <Icon-Create />
+                            <p>Добавить</p>
+                        </Link>
+                        <div class="table-card grid grid_x3">
                             <div v-for="item in category" class="table-card-item">
                                 <div class="table-card-info">
                                     <div class="table-card-info_title">{{ item.title }}</div>

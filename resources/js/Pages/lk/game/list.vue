@@ -22,12 +22,10 @@ const ourImage = (img) => {
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="xt-lk-title">Список игр</div>
-                        <div>
-                            <Link :href="route('game.create')"  class="xt-lk-create">
-                                <Icon-Create />
-                                <p>Добавить</p>
-                            </Link>
-                        </div>
+                        <Link :href="route('game.create')"  class="xt-lk-create">
+                            <Icon-Create />
+                            <p>Добавить</p>
+                        </Link>
                         <div class="table-card">
                             <div v-for="item in games.data" class="table-card-item">
                                 <div class="table-card-cover">
