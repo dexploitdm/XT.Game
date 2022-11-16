@@ -1,11 +1,55 @@
 .table-card {
     &-item {
-
+        display: flex;
+        margin-bottom: 20px;
+        transition: .3s;
     }
     &-cover {
-
+        img {
+            max-width: 100px;
+            transition: .3s;
+        }
     }
     &-info {
-
+        margin-left: 20px;
+        transition: .3s;
+        &_title {
+            font-weight: 700;
+            font-size: 18px;
+        }
+        &_price {
+            margin: 10px 0;
+        }
+        &_actions {
+            display: flex;
+            svg {
+                font-size: 26px;
+            }
+            .edit:hover {
+                svg {
+                    color: $color-green;
+                }
+            }
+            .delete:hover {
+                svg {
+                    color: $color-red;
+                }
+            }
+        }
+    }
+    @media (max-width: 640px) {
+        &-item {
+            display: block;
+        }
+        &-cover {
+            img {
+                margin: auto;
+                max-width: 150px;
+            }
+        }
+        &-info {
+            margin-top: 10px;
+            margin-left: 0;
+        }
     }
 }

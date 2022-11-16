@@ -22,7 +22,7 @@ let form = useForm({
 })
 
 const getCover = () => {
-    let cover = '/uploads/games/preview.png'
+    let cover = '/uploads/games/preview.webp'
     if(form.cover) {
         if(form.cover.indexOf('base64') !== -1 ) {
             cover = form.cover
@@ -48,67 +48,58 @@ const updateCover = (e) => {
 
 const saveGame = () => {
     form.post('/lk/game')
-    // const formData = new FormData()
-    // formData.append('title', form.value.title)
-    // formData.append('desc', form.value.desc)
-    // formData.append('content', form.value.content)
-    // formData.append('cover', form.value.cover)
-    // formData.append('price', form.value.price)
-    //
-    // axios.post('/api/add_game', formData)
-    //     .then((response) => {
-    //
-    //     })
-    //     .catch((error) => {
-    //
-    //     })
 }
-
-
 </script>
 <template>
     <Head title="Добавить игру" />
-
     <BreezeAuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Добавить игру
-            </h2>
-        </template>
-
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
-                        form
-
-                        <input type="text" class="" v-model="form.title"  placeholder="title"/>
-                        <div>
-                            <QuillEditor theme="snow" v-model:content="form.desc" content-type="html"/>
+                        <div class="xt-lk-title">Добавление игры</div>
+                        <div class="xt-form">
+                            <div class="x-form-control">
+                                <label>Название игры</label>
+                                <input type="text" class="x-input x-input-border" v-model="form.title"  placeholder="Название"/>
+                            </div>
+                            <div class="x-form-control">
+                                <label>Описание</label>
+                                <QuillEditor theme="snow" v-model:content="form.desc" content-type="html"/>
+                            </div>
+                            <div class="x-form-control">
+                                <label>Контент</label>
+                                <QuillEditor theme="snow" v-model:content="form.content" content-type="html"/>
+                            </div>
+                            <div class="x-form-double">
+                                <div class="x-form-control full">
+                                    <label>Цена</label>
+                                    <input type="number" class="x-input x-input-border" v-model="form.price"  placeholder="price"/>
+                                </div>
+                                <div class="x-form-control full">
+                                    <label>Цена по текущей скидке</label>
+                                    <input type="number" class="x-input x-input-border" v-model="form.sale"  placeholder="sale"/>
+                                </div>
+                            </div>
+                            <div class="x-form-double">
+                                <div class="x-form-control line">
+                                    <label>Версия для xbox one</label>
+                                    <input type="checkbox"   class="checkbox" :value="form.xbox_one" v-model="form.xbox_one" />
+                                </div>
+                                <div class="x-form-control line">
+                                    <label>Версия для xbox series</label>
+                                    <input type="checkbox"   class="checkbox" :value="form.xbox_sx" v-model="form.xbox_sx" />
+                                </div>
+                            </div>
+                            <div class="x-form-control x-form-control_upload full">
+                                <img :src="getCover()" src="" >
+                                <input type="file" @change="updateCover" />
+                            </div>
                         </div>
-                        <div>
-                            <QuillEditor theme="snow" v-model:content="form.content" content-type="html"/>
-                        </div>
-                        <input type="number" class="" v-model="form.price"  placeholder="price"/>
-
-                        <input type="number" class="" v-model="form.sale"  placeholder="sale"/>
-
-                        
-
-                        xbox one {{ form.xbox_one}}
-                        
-                        xbox series {{form.xbox_sx}}
-                       
-
-                        <img :src="getCover()" src="" >
-
-                        <input type="file" @change="updateCover" />
-
-                        <button type="button" @click="saveGame()">save</button>
+                        <button class="xt-btn color-10" @click="saveGame()">Сохранить</button>
                     </div>
                 </div>
             </div>
         </div>
     </BreezeAuthenticatedLayout>
 </template>
-

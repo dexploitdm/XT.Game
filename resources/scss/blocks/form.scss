@@ -27,6 +27,24 @@
                 border: 1px solid $color-red;
             }
         }
+        &.full {
+            width: 100%;
+        }
+        &.line {
+            display: flex;
+            margin: 0 0 12px;
+            label {
+                margin-right: 10px;
+            }
+        }
+        &_upload {
+            margin: 10px 0 20px;
+            img {
+                max-width: 200px;
+                margin-bottom: 10px;
+                border-radius: 10px;
+            }
+        }
     }
     &-submit {
         margin: 26px auto 0;
@@ -48,6 +66,10 @@
         }
 
     }
+    &-double {
+        display: flex;
+        justify-content: center;
+    }
     @media (max-width: 1360px) {
         &-auth {
             input {
@@ -62,7 +84,9 @@
         &-control {
             max-width: 100%;
         }
-
+        &-double {
+            display: block;
+        }
     }
 }
 .x-input {
@@ -72,6 +96,7 @@
     border-radius: 10px;
     transition: .3s;
     @media (max-width: 1200px) {
+        font-size: 16px;
         padding-top: 6px;
         padding-bottom: 6px;
         min-height: 40px;
