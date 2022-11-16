@@ -65,14 +65,14 @@ const isCart = (id) => {
                                 <div class="single-game-content_text" v-html="game.content"></div>
                                 <div class="single-game-info">
                                     <div class="single-game-info_price">
-                                        <span :class="{ active: game.sale }">{{ game.price }} TRY</span>
+                                        <span :class="{ active: game.sale }">{{ game.price }} TRY </span>
                                         <span class="game-sale" v-if="game.sale">{{ game.sale }} TRY <span class="x-sale">- {{ salePercent(game.price, game.sale) }} %</span></span>
                                         / {{ priceFormat(game.price, game.sale, $inertia.page.props.rate) }} RU
                                     </div>
                                     <Link v-if="isCart(game.id)" :href="route('cart')">
-                                        <button class="xt-btn color-8">Перейти к оформлению</button>
+                                        <button class="xt-btn color-10">Перейти к оформлению</button>
                                     </Link>
-                                    <button v-else type="button" class="xt-btn color-3" @click="addToCart(game)">Добавить в корзину</button>
+                                    <button v-else type="button" class="xt-btn color-5" @click="addToCart(game)">Добавить в корзину</button>
                                 </div>
 
                             </div>

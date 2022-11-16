@@ -73,7 +73,18 @@
                 font-weight: 700;
             }
             &_price {
-
+                .active {
+                    position: relative;
+                    margin-right: 10px;
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        border-bottom: 3px solid #eb3941;
+                        width: 100%;
+                        left: 0;
+                        bottom: 10px;
+                    }
+                }
             }
         }
         &-check {

@@ -110,8 +110,8 @@ const payment = async (rub) => {
                                     </div>
                                     <div class="xt-cart-list-content">
                                         <div class="xt-cart-list-content_title">{{ item.data.title }}</div>
-                                        <div class="xt-cart-list-content_price">{{ item.data.price }}
-                                            <span :class="{ active: item.data.sale }">{{ item.data.price }} TRY</span>
+                                        <div class="xt-cart-list-content_price">
+                                            <span :class="{ active: item.data.sale }">{{ item.data.price }} TRY </span>
                                             <span class="game-sale" v-if="item.data.sale">{{ item.data.sale }} TRY <span class="x-sale">- {{ salePercent(item.data.price, item.data.sale) }} %</span></span>
                                             / {{ priceFormat(item.data.price, item.data.sale, $inertia.page.props.rate) }} RU
                                         </div>
