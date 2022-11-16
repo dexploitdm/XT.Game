@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -69,5 +70,28 @@ class NewPasswordController extends Controller
         throw ValidationException::withMessages([
             'email' => [trans($status)],
         ]);
+    }
+
+    /**
+     * Update password.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return mixed
+     */
+    public function change(Request $request) {
+        # Validation
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+        #Match The Old Password
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with('message', 'Текущий пароль не правильный');
+        }
+        #Update the new Password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+        return back()->with('message', '1');
     }
 }

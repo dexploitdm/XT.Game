@@ -1,5 +1,4 @@
 <script setup>
-import BreezeButton from '@/Components/Button.vue';
 import BreezeCheckbox from '@/Components/Checkbox.vue';
 import BreezeGuestLayout from '@/Layouts/Guest.vue';
 import BreezeInput from '@/Components/Input.vue';
@@ -33,34 +32,31 @@ const submit = () => {
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit" class="x-form-auth">
             <div>
                 <BreezeLabel for="email" value="Email" />
-                <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
+                <BreezeInput id="email" type="email" class="x-input x-input-border" v-model="form.email" required autofocus autocomplete="username" />
                 <BreezeInputError class="mt-2" :message="form.errors.email" />
             </div>
 
             <div class="mt-4">
-                <BreezeLabel for="password" value="Password" />
-                <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
+                <BreezeLabel for="password" value="Пароль" />
+                <BreezeInput id="password" type="password" class="x-input x-input-border" v-model="form.password" required autocomplete="current-password" />
                 <BreezeInputError class="mt-2" :message="form.errors.password" />
             </div>
 
             <div class="block mt-4">
                 <label class="flex items-center">
                     <BreezeCheckbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                    <span class="ml-2 text-sm text-gray-600">Оставаться в системе</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
                 <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Forgot your password?
+                    Забыли пароль?
                 </Link>
-
-                <BreezeButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
-                </BreezeButton>
+                <button class="xt-btn color-10 ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">Вход</button>
             </div>
         </form>
     </BreezeGuestLayout>

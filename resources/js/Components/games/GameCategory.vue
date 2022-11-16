@@ -12,13 +12,17 @@ onMounted(async () => {
 
 </script>
 <template>
-    <div class="container">
-        <div class="container-box">
+    <div class="layout">
+        <div class="layout-box">
             <div class="category-lists">
-
+                <div class="category-lists_item">
+                    <Link :href="route('showAll')">
+                        <button type="button" class="xt-btn color-7">Все сразу</button>
+                    </Link>
+                </div>
                 <div class="category-lists_item" v-for="item in categories">
                     <Link :href="route('showCat', item.id)">
-                        <button type="button" class="xt-btn color-3">{{ item.title }}</button>
+                        <button type="button" class="xt-btn color-5">{{ item.title }}</button>
                     </Link>
                 </div>
             </div>

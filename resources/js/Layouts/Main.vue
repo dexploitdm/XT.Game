@@ -1,65 +1,46 @@
 <script setup>
 import Logo from '@/Components/Logo.vue';
-import { Link } from '@inertiajs/inertia-vue3';
+import Menu from '@/Components/other/Menu.vue';
+import Cart from '@/Components/other/Cart.vue';
 import IconAccountBox from '~icons/el/shopping-cart-sign'
-import {computed, onMounted, ref} from "vue";
-import {useStore} from 'vuex'
-const store = useStore()
-
-const gameInCart = computed(() => store.getters.getCarts)
-
-let canLogin = ref([])
-let canRegister = ref([])
-
-onMounted(async () => {
-    getInfo()
-})
-
-const getInfo = async () => {
-    let response = await axios.get('/api/get_info');
-    canLogin.value = response.data.canLogin
-    canRegister.value = response.data.canRegister
-}
-
 </script>
-
 <template>
     <header>
-        <Logo />
-
-        <div class="header-menu">
-
-            <div class="cart-icon">
-                <Link :href="route('cart')">
-                    <div class="cart-icon-count">{{ gameInCart.length }}</div>
-                    <icon-account-box />
-                </Link>
-
+        <div class="navbar bg-base-100">
+            <div class="flex-1">
+                <Logo/>
             </div>
-
-            <div v-if="canLogin" class="header-menu-auth">
-
-
-                <Link v-if="$page.props.auth.user" :href="route('dashboard')" class="xt-btn color-11">Личный кабинет</Link>
-
-                <template v-else>
-                    <Link :href="route('login')" class="xt-btn color-3 x-marr20">Вход</Link>
-
-                    <Link v-if="canRegister" :href="route('register')" class="xt-btn color-11">Регистрация</Link>
-                </template>
+            <Cart />
+            <div class="hidden lg:block">
+                <Menu />
+            </div>
+            <div class="flex-none lg:hidden">
+                <div class="dropdown dropdown-end">
+                    <button class="btn btn-square btn-ghost">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
+                    </button>
+                    <div tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <Menu />
+                    </div>
+                </div>
             </div>
         </div>
-
     </header>
     <main>
-        <slot />
+        <slot/>
     </main>
     <footer>
-        <div class="f-logo">
-            <Logo :link="true"/>
-        </div>
-        <div class="f-desc">
-            XT.Game ©Copyright 2022
+        <div class="layout">
+            <div class="layout-box">
+                <div class="footer">
+                    <div class="f-logo">
+                        <Logo :link="true"/>
+                    </div>
+                    <div class="f-desc">
+                        XT.Game ©Copyright 2022
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 </template>

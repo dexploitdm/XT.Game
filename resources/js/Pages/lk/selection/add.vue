@@ -45,40 +45,31 @@ const getIDs = (e) => {
 </script>
 <template>
     <Head title="Добавить категорию" />
-
     <BreezeAuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Добавить подборку игр
-                <pre>
-<!--                    {{ form.game_ids }}-->
-                </pre>
-            </h2>
-        </template>
-
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
-                        form
-
-                        <SearchSelectionGames v-on:ids="getIDs"/>
-
-                        <input type="text" class="" v-model="form.title" />
-
-                        <img :src="getCover()" src="" >
-
-                        <input type="file" @change="updateCover" />
-
-
-
-
-
-                        <button type="button" @click="saveSelection()">save</button>
+                        <div class="xt-lk-title">Добавление подборки</div>
+                        <div class="xt-form">
+                            <div class="x-form-control">
+                                <label>Название сборника</label>
+                                <input type="text" class="x-input x-input-border" v-model="form.title"  placeholder="Название"/>
+                            </div>
+                            <div class="x-form-control x-form-control_upload full m-auto">
+                                <label>Обложка</label>
+                                <img :src="getCover()" src="" >
+                                <input type="file" @change="updateCover" />
+                            </div>
+                            <div class="x-form-control">
+                                <label>Выберите игры</label>
+                                <SearchSelectionGames v-on:ids="getIDs"/>
+                            </div>
+                        </div>
+                        <button class="xt-btn color-10" @click="saveSelection()">Сохранить</button>
                     </div>
                 </div>
             </div>
         </div>
     </BreezeAuthenticatedLayout>
 </template>
-

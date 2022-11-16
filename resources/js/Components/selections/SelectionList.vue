@@ -14,8 +14,8 @@ onMounted(async () => {
 
 </script>
 <template>
-    <div class="container">
-        <div class="container-box">
+    <div class="layout">
+        <div class="layout-box">
             <div class="selection">
                 <div v-for="item in selections" class="selection-item">
                     <Link :href="route('showSelection', item.id)">

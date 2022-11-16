@@ -57,7 +57,7 @@ const isCart = (id) => {
             </div>
             <div class="game-list-pay">
                 <Link v-if="isCart(game.id)" :href="route('cart')">
-                    <button class="xt-btn color-8">В корзине</button>
+                    <button class="xt-btn color-10">В корзине</button>
                 </Link>
                 <button v-else class="xt-btn color-2" @click="addToCart(game)">В корзину</button>
             </div>

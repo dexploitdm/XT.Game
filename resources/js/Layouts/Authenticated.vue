@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
+import Logo from '@/Components/Logo.vue';
 import BreezeDropdown from '@/Components/Dropdown.vue';
 import BreezeDropdownLink from '@/Components/DropdownLink.vue';
 import BreezeNavLink from '@/Components/NavLink.vue';
@@ -21,7 +21,7 @@ const showingNavigationDropdown = ref(false);
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
-                                    <BreezeApplicationLogo class="block h-9 w-auto" />
+                                    <Logo/>
                                 </Link>
                             </div>
 
@@ -33,9 +33,6 @@ const showingNavigationDropdown = ref(false);
                             </div>
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-<!--                                <BreezeNavLink :href="route('GameList')" :active="route().current('GameList')">-->
-<!--                                    Игры-->
-<!--                                </BreezeNavLink> -->
                                 <BreezeNavLink :href="route('game.index')" :active="route().current('game.index')">
                                     Игры
                                 </BreezeNavLink>
@@ -45,8 +42,8 @@ const showingNavigationDropdown = ref(false);
                                 <BreezeNavLink :href="route('selection.index')" :active="route().current('selection.index')">
                                     Подборки
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('slider.index')" :active="route().current('slider.index')">
-                                    Слайдер
+                                <BreezeNavLink :href="route('orders.index')" :active="route().current('orders.index')">
+                                    Заявки
                                 </BreezeNavLink>
 
                             </div>
@@ -114,11 +111,11 @@ const showingNavigationDropdown = ref(false);
             </nav>
 
             <!-- Page Heading -->
-            <header class="bg-white shadow" v-if="$slots.header">
+            <!-- <header class="bg-white shadow" v-if="$slots.header">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>
-            </header>
+            </header> -->
 
             <!-- Page Content -->
             <main>
