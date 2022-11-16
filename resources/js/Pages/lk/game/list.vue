@@ -25,7 +25,7 @@ const ourImage = (img) => {
                         <div>
                             <Link :href="route('game.create')"  class="xt-lk-create">
                                 <Icon-Create />
-                                <div>Добавить</div>
+                                <p>Добавить</p>
                             </Link>
                         </div>
                         <div class="table-card">

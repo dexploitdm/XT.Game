@@ -14,23 +14,19 @@ const saveCat = () => {
 </script>
 <template>
     <Head title="Добавить категорию" />
-
     <BreezeAuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Добавить категорию
-            </h2>
-        </template>
-
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
-                        form
-
-                        <input type="text" class="" v-model="form.title" />
-
-                        <button type="button" @click="saveCat()">save</button>
+                        <div class="xt-lk-title">Добавление категории</div>
+                        <div class="xt-form">
+                            <div class="x-form-control">
+                                <label>Название категории</label>
+                                <input type="text" class="x-input x-input-border" v-model="form.title"  placeholder="Название"/>
+                            </div>
+                        </div>
+                        <button class="xt-btn color-10" @click="saveCat()">Сохранить</button>
                     </div>
                 </div>
             </div>
