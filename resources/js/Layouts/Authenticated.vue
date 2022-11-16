@@ -33,9 +33,6 @@ const showingNavigationDropdown = ref(false);
                             </div>
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-<!--                                <BreezeNavLink :href="route('GameList')" :active="route().current('GameList')">-->
-<!--                                    Игры-->
-<!--                                </BreezeNavLink> -->
                                 <BreezeNavLink :href="route('game.index')" :active="route().current('game.index')">
                                     Игры
                                 </BreezeNavLink>
