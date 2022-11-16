@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
+import Logo from '@/Components/Logo.vue';
 import BreezeDropdown from '@/Components/Dropdown.vue';
 import BreezeDropdownLink from '@/Components/DropdownLink.vue';
 import BreezeNavLink from '@/Components/NavLink.vue';
@@ -21,7 +21,7 @@ const showingNavigationDropdown = ref(false);
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
-                                    <BreezeApplicationLogo class="block h-9 w-auto" />
+                                    <Logo/>
                                 </Link>
                             </div>
 
