@@ -67,7 +67,7 @@ const reload = async () => {
                                         <span v-else>Ожидайте..</span>
                                     </div>
                                     <div class="flex-row xt-order-status" role="cell">
-                                        <span :class="{ active: item.active }" v-if="item.active">Активен</span>
+                                        <span v-if="item.active === '1' || item.active === 1" class="active">Активен</span>
                                         <span v-else>Закрыт</span>
                                     </div>
                                 </div>
