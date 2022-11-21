@@ -1,4 +1,5 @@
 <script setup>
+import { Link } from '@inertiajs/inertia-vue3';
 import { ref } from 'vue';
 import SearchGame from '@/Components/other/SearchGame.vue';
 
@@ -41,7 +42,7 @@ const priceFormat = (price, sale, rate) => {
                                 <SearchGame v-on:data="listSearch"/>
                                 <ul v-if="searchData.length > 0" tabindex="0" class="x-screen-search-list dropdown-content menu p-2 shadow bg-base-100 rounded-box">
                                     <li v-for="item in searchData">
-                                        <a>
+                                        <Link :href="route('show', item.id)">
                                             <img class="x-screen-search_cover" :src="'/uploads/games/' + item.cover"/>
                                             <div class="x-screen-search_desc">
                                                 <p>{{item.title}}</p>
@@ -49,7 +50,7 @@ const priceFormat = (price, sale, rate) => {
                                                 <span class="game-sale" v-if="item.sale">{{ item.sale }} TRY <span class="x-sale">- {{ salePercent(item.price, item.sale) }} %</span></span>
                                                 / {{ priceFormat(item.price, item.sale, $inertia.page.props.rate) }} RU
                                             </div>
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
