@@ -13,11 +13,6 @@ Route::get('/get_selections', [\App\Http\Controllers\SelectionController::class,
 Route::get('/get_selection/{id}', [\App\Http\Controllers\GameController::class, 'get_selection_games']);
 Route::get('/get_selection_games/{id}', [\App\Http\Controllers\SelectionController::class, 'get_selection_games']);
 
-Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/user/orders', [\App\Http\Controllers\OrderController::class, 'getOrdersUser']);
-    Route::post('/payment/{price}', [\App\Http\Controllers\OrderController::class, 'payment']);
-});
-
 Route::middleware(['is_admin'])->group(function () {
-    Route::get('/search_order/', [\App\Http\Controllers\Admin\OrderController::class, 'searchOrdersByUID']);
+//    Route::get('/search_order/', [\App\Http\Controllers\Admin\OrderController::class, 'searchOrdersByUID']);
 });

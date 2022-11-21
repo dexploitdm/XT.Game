@@ -2,12 +2,12 @@ import Client from './Clients/AxiosClient';
 
 export default {
     payment(rub) {
-        return Client.post(`/api/payment/` + rub);
+        return Client.post(`/user/payment/` + rub);
     },
     getOrdersUser() {
-        return Client.get(`/api/user/orders`);
+        return Client.get(`/user/get_orders`);
     },
     search(data) {
-        return Client.get(`/api/search_order?search=${data}`);
+        return Client.get(`/lk/search_order?search=${data}`);
     },
 };

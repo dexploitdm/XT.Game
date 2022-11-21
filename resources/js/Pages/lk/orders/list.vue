@@ -128,7 +128,7 @@ const listSearch = (e) => {
                                     </div>
                                     <div class="xt-order-search_block flex">
                                         <div class="flex-row xt-order-status" role="cell">
-                                            <span :class="{ active: item.active }" v-if="item.active">Активен</span>
+                                            <span v-if="item.active === '1' || item.active === 1" class="active">Активен</span>
                                             <span v-else>Закрыт</span>
                                         </div>
                                         <div class="xt-order-code">
@@ -171,7 +171,7 @@ const listSearch = (e) => {
                                     <td>{{ item.total_price }}</td>
                                     <td style="max-width: 250px;">
                                         <div class="flex-row xt-order-status" role="cell">
-                                           Статус заявки: <span :class="{ active: item.active }" v-if="item.active">Активен</span>
+                                           Статус заявки: <span v-if="item.active === '1' || item.active === 1" class="active">Активен</span>
                                             <span v-else>Закрыт</span>
                                         </div>
 
